@@ -131,7 +131,7 @@ export default function LanguageSwitcher() {
   const display = current === "en" ? "EN" : current.toUpperCase();
 
   return (
-    <div ref={ref} className="fixed top-4 right-4 z-50">
+    <div ref={ref} translate="no" className="fixed top-4 right-4 z-50">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}

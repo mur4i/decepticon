@@ -178,15 +178,21 @@ export default function EdgeTtsReader({
 
   if (status === "loading") {
     return (
-      <div className={`${pillBase} text-white/60 inline-flex items-center gap-2`}>
+      <div
+        translate="no"
+        className={`${pillBase} text-white/60 inline-flex items-center gap-2`}
+      >
         <span className="inline-block w-2 h-2 rounded-full bg-white/40 animate-pulse" />
         Loading voice…
       </div>
     );
   }
 
+  // translate="no" keeps Google Translate from rewriting button text on the
+  // translate.goog proxy — without it React's reconciliation collides with
+  // the DOM swap when status transitions fire ("removeChild not a child").
   return (
-    <div className="inline-flex items-center gap-2">
+    <div translate="no" className="inline-flex items-center gap-2">
       {status === "idle" && (
         <button
           type="button"
