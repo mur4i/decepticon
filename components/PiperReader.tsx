@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import SpeechReader from "./SpeechReader";
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 // Piper voice per supported language. Languages without a voice fall back to
 // the browser Web Speech API via SpeechReader.
 const VOICE_BY_LANG: Record<string, string> = {
@@ -134,15 +136,17 @@ export default function PiperReader({
           setModelProgress(Math.round((p.loaded / p.total) * 100));
         }
       },
-      // Library default points at cdnjs/onnxruntime-web@1.18.0 which lacks
-      // ort-wasm-simd-threaded.jsep.mjs (introduced in 1.19). Pin to jsdelivr
-      // at 1.19.2, which mirrors the full npm dist/ tree.
+      // onnxWasm comes from jsdelivr because the library default cdnjs URL
+      // (1.18.0) lacks the jsep.mjs files introduced in 1.19. ONNX loads its
+      // siblings via dynamic ES import, which translate.goog forwards as JS.
+      //
+      // piper-wasm files MUST be same-origin: translate.goog rewrites
+      // cross-origin fetch() to /3.../ajax?u=... and returns 400 for binary
+      // payloads. Self-hosted under /wasm/piper/ they survive proxying.
       wasmPaths: {
         onnxWasm: "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/",
-        piperData:
-          "https://cdn.jsdelivr.net/npm/@diffusionstudio/piper-wasm@1.0.0/build/piper_phonemize.data",
-        piperWasm:
-          "https://cdn.jsdelivr.net/npm/@diffusionstudio/piper-wasm@1.0.0/build/piper_phonemize.wasm",
+        piperData: `${BASE_PATH}/wasm/piper/piper_phonemize.data`,
+        piperWasm: `${BASE_PATH}/wasm/piper/piper_phonemize.wasm`,
       },
     });
     sessionRef.current = session;
