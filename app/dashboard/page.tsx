@@ -19,8 +19,11 @@ export default function Dashboard() {
         </p>
       </header>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <MetricTile label="Lines written today" value={m.linesToday} />
+      <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <Link href="/chronicles/" className="contents">
+          <MetricTile label="Chronicles" value={m.chroniclesWritten} />
+        </Link>
+        <MetricTile label="Lines today" value={m.linesToday} />
         <Link href="/roadblocks/" className="contents">
           <MetricTile label="Active roadblocks" value={m.activeRoadblocks} />
         </Link>

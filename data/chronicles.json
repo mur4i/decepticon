@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": "chr-0000",
+      "title": "Prologue",
+      "slug": "prologue",
+      "axes": ["meta", "epistemology"],
+      "publishedAt": "2026-05-12T18:30:00.000Z",
+      "wordCount": 717,
+      "references": [
+        "The Library of Babel — Jorge Luis Borges",
+        "The Voyager Golden Record"
+      ]
+    }
+  ]
+}

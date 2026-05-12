@@ -9,15 +9,18 @@
     "start": "next start",
     "lint": "next lint",
     "metrics": "node scripts/compute-metrics.mjs",
+    "chronicle": "node scripts/chronicle.mjs",
     "pick-roadblock": "node scripts/pick-roadblock.mjs"
   },
   "dependencies": {
+    "marked": "^14.1.0",
     "next": "15.1.0",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

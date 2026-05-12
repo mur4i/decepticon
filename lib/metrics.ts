@@ -5,6 +5,7 @@ export interface Metrics {
   activeRoadblocks: number;
   selfHealed: number;
   totalAttempts: number;
+  chroniclesWritten: number;
   recent: { title: string; at: string }[];
   updatedAt: string;
 }

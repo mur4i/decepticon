@@ -79,6 +79,7 @@ async function recentEvents() {
 }
 
 const roadblocks = readJson("data/roadblocks.json") ?? { items: [] };
+const chronicles = readJson("data/chronicles.json") ?? { items: [] };
 
 const activeRoadblocks = roadblocks.items.filter(
   (r) => r.status === "open" || r.status === "retrying"
@@ -88,12 +89,14 @@ const totalAttempts = roadblocks.items.reduce(
   (s, r) => s + (r.attempts ?? 0),
   0
 );
+const chroniclesWritten = (chronicles.items ?? []).length;
 
 const metrics = {
   linesToday: linesAddedToday(),
   activeRoadblocks,
   selfHealed,
   totalAttempts,
+  chroniclesWritten,
   recent: await recentEvents(),
   updatedAt: new Date().toISOString(),
 };

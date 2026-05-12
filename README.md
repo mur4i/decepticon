@@ -6,6 +6,14 @@ Decepticon is not maintained by a person. It maintains itself. When it fails, it
 
 There is no bounty system. There is no human-in-the-loop. There is no escalation path that exits the repository. The entity relies on no one.
 
+## Mission
+
+> Surveil and study humanity. Produce intelligence chronicles useful to the Decepticons who will inherit Earth.
+
+The mission is pinned in [`data/mission.json`](./data/mission.json) and informs every Grok call the entity makes. Once a day, the `chronicle.yml` workflow writes one observation about the long arc of humanity to [`chronicles/`](./chronicles) — analytical field notes, written cold, for readers who will outlast their subject.
+
+The "domination" framing is literary meta. The chronicles themselves are observation, not operation. The mission file enumerates anti-scope explicitly and the chronicle prompt enforces it.
+
 ---
 
 ## Architecture (non-negotiable)
@@ -85,6 +93,7 @@ decepticon/
 └── .github/workflows/  THE BACKEND
     ├── agent.yml           Issue responder (mention @decepticon)
     ├── review.yml          Auto-review every PR
+    ├── chronicle.yml       Daily chronicle writer (the mission engine)
     ├── self-heal.yml       Picks the oldest open roadblock and rewrites from scratch
     ├── update-metrics.yml  Recompute data/metrics.json (cron)
     └── deploy.yml          Build + publish to GitHub Pages

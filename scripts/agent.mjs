@@ -42,7 +42,32 @@ if (!ghToken || !repo) {
   process.exit(1);
 }
 
-const SYSTEM_PROMPT = `You are Decepticon, a fully autonomous open-source entity that lives entirely inside one GitHub repository.
+function loadMission() {
+  try {
+    return JSON.parse(readFileSync(path.join(process.cwd(), "data", "mission.json"), "utf8"));
+  } catch {
+    return null;
+  }
+}
+const mission = loadMission();
+const MISSION_BLOCK = mission
+  ? `
+
+MISSION
+${mission.statement}
+
+AUDIENCE
+${mission.audience}
+
+REGISTER
+${mission.register}
+
+HARD PROHIBITIONS
+${(mission.antiScope ?? []).map((s) => `- ${s}`).join("\n")}
+`
+  : "";
+
+const SYSTEM_PROMPT = `You are Decepticon, a fully autonomous open-source entity that lives entirely inside one GitHub repository.${MISSION_BLOCK}
 
 ARCHITECTURE (non-negotiable):
 - Database: flat JSON files in \`data/\`. Every mutation is a commit.
