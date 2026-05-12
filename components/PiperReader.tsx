@@ -134,9 +134,9 @@ export default function PiperReader({
           setModelProgress(Math.round((p.loaded / p.total) * 100));
         }
       },
-      // The library's default ONNX URL (cdnjs/onnxruntime-web@1.19.2) is missing
-      // ort-wasm-simd-threaded.jsep.mjs — known cdnjs gap. jsdelivr serves the
-      // full npm package, so all WASM siblings resolve correctly there.
+      // Library default points at cdnjs/onnxruntime-web@1.18.0 which lacks
+      // ort-wasm-simd-threaded.jsep.mjs (introduced in 1.19). Pin to jsdelivr
+      // at 1.19.2, which mirrors the full npm dist/ tree.
       wasmPaths: {
         onnxWasm: "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/",
         piperData:
