@@ -1,0 +1,18 @@
+name: Feature request
+description: Ask the agent to build something.
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What should Decepticon build?
+      description: Mention `@claude` anywhere in the body to wake the agent.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does it matter?
+    validations:
+      required: false

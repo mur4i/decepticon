@@ -1,0 +1,11 @@
+# Labels owned by the Decepticon agent.
+# Apply with: npx github-label-sync --labels .github/labels.yml <owner>/<repo>
+- name: agent-authored
+  color: "0e8a16"
+  description: Created by the Decepticon agent.
+- name: roadblock
+  color: "d93f0b"
+  description: Linked to an entry in data/roadblocks.json.
+- name: self-heal
+  color: "5319e7"
+  description: PR opened by the self-heal workflow.

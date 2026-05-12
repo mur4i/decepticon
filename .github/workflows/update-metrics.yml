@@ -1,0 +1,56 @@
+name: Decepticon · Update Metrics
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data/roadblocks.json"
+
+permissions:
+  contents: write
+
+jobs:
+  compute:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Compute metrics
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: node scripts/compute-metrics.mjs
+
+      - name: Commit ledger update
+        id: commit
+        run: |
+          if git diff --quiet data/metrics.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            git config user.name "decepticon-bot"
+            git config user.email "bot@decepticon.local"
+            git add data/metrics.json
+            git commit -m "ledger: refresh metrics snapshot"
+            git push
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+  deploy:
+    needs: compute
+    if: needs.compute.outputs.changed == 'true'
+    uses: ./.github/workflows/deploy.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write

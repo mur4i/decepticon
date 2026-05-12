@@ -1,0 +1,40 @@
+name: Decepticon · Agent
+
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  respond:
+    if: |
+      github.event.issue.pull_request == null && (
+        (github.event_name == 'issues' && (contains(github.event.issue.body, '@decepticon') || contains(github.event.issue.title, '@decepticon'))) ||
+        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@decepticon'))
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run agent
+        env:
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GROK_MODEL: ${{ vars.GROK_MODEL }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TASK_TYPE: issue
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: node scripts/agent.mjs

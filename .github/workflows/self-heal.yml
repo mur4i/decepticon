@@ -1,0 +1,59 @@
+name: Decepticon · Self-Heal
+
+on:
+  schedule:
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data/roadblocks.json"
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: self-heal
+  cancel-in-progress: false
+
+jobs:
+  pick:
+    if: github.actor != 'decepticon-bot'
+    runs-on: ubuntu-latest
+    outputs:
+      id: ${{ steps.pick.outputs.id }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Pick next roadblock
+        id: pick
+        run: node scripts/pick-roadblock.mjs
+
+  heal:
+    needs: pick
+    if: needs.pick.outputs.id != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run healer
+        env:
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GROK_MODEL: ${{ vars.GROK_MODEL }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TASK_TYPE: heal
+          ROADBLOCK_ID: ${{ needs.pick.outputs.id }}
+        run: node scripts/agent.mjs
