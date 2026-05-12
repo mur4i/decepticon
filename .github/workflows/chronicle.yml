@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  models: read
 
 concurrency:
   group: chronicle
@@ -27,8 +28,7 @@ jobs:
 
       - name: Write today's chronicle
         env:
-          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
-          GROK_MODEL: ${{ vars.GROK_MODEL }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: node scripts/chronicle.mjs

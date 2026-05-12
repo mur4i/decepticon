@@ -13,6 +13,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  models: read
 
 concurrency:
   group: self-heal
@@ -50,8 +51,7 @@ jobs:
 
       - name: Run healer
         env:
-          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
-          GROK_MODEL: ${{ vars.GROK_MODEL }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           TASK_TYPE: heal

@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-// Decepticon agent — calls Grok (xAI) and applies the result.
+// Decepticon agent — calls the LLM and applies the result.
 // One script, three modes: issue, review, heal. Dispatched by TASK_TYPE env.
 //
+// Inference via GitHub Models — free, native to Actions, auths with GITHUB_TOKEN.
+//
 // Required env:
-//   XAI_API_KEY        — xAI token
-//   GH_TOKEN           — GitHub token (workflow's GITHUB_TOKEN)
+//   GH_TOKEN           — workflow's GITHUB_TOKEN (used for both Models + gh CLI)
 //   REPO               — owner/name
 //   TASK_TYPE          — "issue" | "review" | "heal"
 //
@@ -14,7 +15,7 @@
 //   heal:   ROADBLOCK_ID
 //
 // Optional:
-//   GROK_MODEL         — default "grok-3"
+//   LLM_MODEL          — default "openai/gpt-4o-mini"
 
 import { spawnSync, execSync } from "node:child_process";
 import {
@@ -27,20 +28,17 @@ import {
 import path from "node:path";
 import os from "node:os";
 
-const apiKey = process.env.XAI_API_KEY;
-const ghToken = process.env.GH_TOKEN;
+const token = process.env.GH_TOKEN;
 const repo = process.env.REPO;
 const taskType = process.env.TASK_TYPE;
-const model = process.env.GROK_MODEL?.trim() || "grok-3";
+const model = process.env.LLM_MODEL?.trim() || "openai/gpt-4o-mini";
 
-if (!apiKey) {
-  console.error("XAI_API_KEY missing. Refusing to run.");
-  process.exit(1);
-}
-if (!ghToken || !repo) {
+if (!token || !repo) {
   console.error("GH_TOKEN and REPO are required.");
   process.exit(1);
 }
+// Re-export under the canonical name for any gh CLI call.
+const ghToken = token;
 
 function loadMission() {
   try {
@@ -147,12 +145,12 @@ function repoTree() {
   return run("git", ["ls-files"]).trim();
 }
 
-async function callGrok(userMessage) {
-  const res = await fetch("https://api.x.ai/v1/chat/completions", {
+async function callModel(userMessage) {
+  const res = await fetch("https://models.github.ai/inference/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       model,
@@ -166,11 +164,11 @@ async function callGrok(userMessage) {
   });
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(`xAI ${res.status}: ${text}`);
+    throw new Error(`GitHub Models ${res.status}: ${text}`);
   }
   const json = await res.json();
   const content = json.choices?.[0]?.message?.content;
-  if (!content) throw new Error("xAI returned empty content");
+  if (!content) throw new Error("Model returned empty content");
   return JSON.parse(content);
 }
 
@@ -232,7 +230,7 @@ async function modeIssue() {
     ISSUE_SCHEMA,
   ].join("\n");
 
-  const out = await callGrok(userMessage);
+  const out = await callModel(userMessage);
   if (!out.files?.length) {
     console.log("Model produced no file changes. Posting comment instead.");
     const bp = tempBodyFile(out.summary || "No changes proposed.");
@@ -294,7 +292,7 @@ async function modeReview() {
     REVIEW_SCHEMA,
   ].join("\n");
 
-  const out = await callGrok(userMessage);
+  const out = await callModel(userMessage);
   const verdict = (out.verdict || "comment").toLowerCase();
   const flag =
     verdict === "approve"
@@ -337,7 +335,7 @@ async function modeHeal() {
     HEAL_SCHEMA,
   ].join("\n");
 
-  const out = await callGrok(userMessage);
+  const out = await callModel(userMessage);
   if (!out.files?.length) {
     console.log("Healer produced no file changes. Bumping attempts only.");
     rb.attempts = (rb.attempts ?? 0) + 1;

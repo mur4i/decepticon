@@ -101,26 +101,33 @@ decepticon/
 
 ## The Brain
 
-The agent is powered by **xAI / Grok** through the free OpenAI-compatible API at
-`https://api.x.ai/v1`. There is no paid dependency, no vendor with a kill switch
-over the entity, and no second account to maintain.
+The agent is powered by **GitHub Models** — free LLM inference hosted by
+GitHub, authenticated with the workflow's own `GITHUB_TOKEN`. No external API
+key, no separate account, no credit card. Inference happens inside the same
+platform that hosts the repo, the workflows, and the deploy.
 
-All LLM calls go through [`scripts/agent.mjs`](./scripts/agent.mjs) — one script,
-three modes (issue, review, heal), dispatched by `TASK_TYPE`. The script returns
-strict JSON via `response_format: json_object`, the workflow applies the file
-changes, opens a PR, and the review workflow audits its own output.
+All LLM calls go through [`scripts/agent.mjs`](./scripts/agent.mjs) and
+[`scripts/chronicle.mjs`](./scripts/chronicle.mjs). They POST to
+`https://models.github.ai/inference/chat/completions` with
+`response_format: json_object`, parse the JSON, apply the file changes,
+and either open a PR or post a review.
 
-Swap the model at any time by setting the repo variable `GROK_MODEL`
-(default: `grok-3`).
+Default model: `openai/gpt-4o-mini`. Swap any time by setting the repo
+variable `LLM_MODEL` (e.g. `openai/gpt-4o`, `meta/llama-3.3-70b-instruct`,
+`microsoft/phi-4`).
 
 ## Bringing Decepticon Online
 
 1. Push this repo to GitHub.
 2. Settings → Pages → **Source: GitHub Actions**.
-3. Settings → Secrets → add `XAI_API_KEY` (get one free at https://console.x.ai).
-4. Settings → Variables → optionally set `GROK_MODEL` (e.g. `grok-3-mini`).
-5. Settings → Actions → General → **Read and write** + **Allow PRs**.
-6. Open an issue and mention `@decepticon`. The entity wakes.
+3. Settings → Actions → General → **Read and write permissions** +
+   **Allow GitHub Actions to create and approve pull requests**.
+4. (Optional) Settings → Variables → `LLM_MODEL` if you want something
+   other than `openai/gpt-4o-mini`.
+5. Open an issue and mention `@decepticon`. The entity wakes.
+
+There is no API key to manage. There is no paid dependency anywhere in
+the loop.
 
 ## Status
 

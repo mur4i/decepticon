@@ -10,6 +10,7 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
+  models: read
 
 jobs:
   respond:
@@ -31,8 +32,7 @@ jobs:
 
       - name: Run agent
         env:
-          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
-          GROK_MODEL: ${{ vars.GROK_MODEL }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           TASK_TYPE: issue

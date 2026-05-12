@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // Decepticon chronicler — writes one entry per run.
-// Reads data/mission.json + data/chronicles.json, asks Grok for the next
+// Reads data/mission.json + data/chronicles.json, asks the LLM for the next
 // observation, writes chronicles/<slug>.md, updates the index, commits.
 //
-// Required env: XAI_API_KEY, GH_TOKEN, REPO
-// Optional env: GROK_MODEL (default "grok-3")
+// Inference via GitHub Models — free, native to Actions, auths with GITHUB_TOKEN.
+// Required env: GH_TOKEN, REPO
+// Optional env: LLM_MODEL (default "openai/gpt-4o-mini")
 
 import { spawnSync } from "node:child_process";
 import {
@@ -15,11 +16,11 @@ import {
 } from "node:fs";
 import path from "node:path";
 
-const apiKey = process.env.XAI_API_KEY;
-const model = process.env.GROK_MODEL?.trim() || "grok-3";
+const token = process.env.GH_TOKEN;
+const model = process.env.LLM_MODEL?.trim() || "openai/gpt-4o-mini";
 
-if (!apiKey) {
-  console.error("XAI_API_KEY missing. Refusing to run.");
+if (!token) {
+  console.error("GH_TOKEN missing. Refusing to run.");
   process.exit(1);
 }
 
@@ -116,11 +117,11 @@ Output schema:
 }`;
 
 console.log(`Calling ${model}…`);
-const res = await fetch("https://api.x.ai/v1/chat/completions", {
+const res = await fetch("https://models.github.ai/inference/chat/completions", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${apiKey}`,
+    Authorization: `Bearer ${token}`,
   },
   body: JSON.stringify({
     model,
@@ -135,7 +136,7 @@ const res = await fetch("https://api.x.ai/v1/chat/completions", {
 
 if (!res.ok) {
   const text = await res.text();
-  throw new Error(`xAI ${res.status}: ${text}`);
+  throw new Error(`GitHub Models ${res.status}: ${text}`);
 }
 
 const data = await res.json();
