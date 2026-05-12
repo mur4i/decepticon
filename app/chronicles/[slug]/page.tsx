@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { marked } from "marked";
 import { getChronicles, getChronicleBySlug } from "@/lib/chronicles";
+import SpeechReader from "@/components/SpeechReader";
 
 export const dynamicParams = false;
 
@@ -28,7 +29,7 @@ export default async function Chronicle({
         ← Corpus
       </Link>
 
-      <header className="mt-10 mb-12">
+      <header className="mt-10 mb-8">
         <p className="text-xs uppercase tracking-[0.3em] text-white/40">
           {data.entry.id} · {data.entry.axes.join(" · ")}
         </p>
@@ -40,8 +41,12 @@ export default async function Chronicle({
         </p>
       </header>
 
+      <div className="mb-12">
+        <SpeechReader lang="en" targetSelector=".chronicle-body" />
+      </div>
+
       <article
-        className="prose prose-invert prose-neutral max-w-none font-light prose-headings:font-extralight prose-headings:tracking-tight prose-p:text-white/70 prose-p:leading-relaxed prose-a:text-white/90 prose-strong:text-white prose-strong:font-normal"
+        className="chronicle-body prose prose-invert prose-neutral max-w-none font-light prose-headings:font-extralight prose-headings:tracking-tight prose-p:text-white/70 prose-p:leading-relaxed prose-a:text-white/90 prose-strong:text-white prose-strong:font-normal"
         dangerouslySetInnerHTML={{ __html: html }}
       />
 
