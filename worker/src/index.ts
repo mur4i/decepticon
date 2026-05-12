@@ -12,9 +12,40 @@
 //   POST /tts (JSON body { voice, text, rate? })  — same, no URL length limit
 
 const TRUSTED_CLIENT_TOKEN = "6A5AA1D4EAFF4E9FB37E23D68491D6F4";
-const WSS_URL = `wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=${TRUSTED_CLIENT_TOKEN}`;
+const SEC_MS_GEC_VERSION = "1-143.0.3650.75";
+const WIN_EPOCH_OFFSET = 11644473600; // seconds between 1601-01-01 and 1970-01-01
+
+// Microsoft added a signed token (Sec-MS-GEC) in 2024 that must travel with
+// every TTS connection. It's a SHA-256 of "<windows-ticks-floored-to-5min>
+// <TrustedClientToken>", uppercased.
+async function generateSecMsGec(): Promise<string> {
+  const seconds =
+    Math.floor((Date.now() / 1000 + WIN_EPOCH_OFFSET) / 300) * 300;
+  const ticks = BigInt(seconds) * 10000000n;
+  const data = `${ticks.toString()}${TRUSTED_CLIENT_TOKEN}`;
+  const hashBuf = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(data)
+  );
+  return Array.from(new Uint8Array(hashBuf))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("")
+    .toUpperCase();
+}
+
+async function buildTtsUrl(): Promise<string> {
+  const sec = await generateSecMsGec();
+  const connectionId = crypto.randomUUID().replace(/-/g, "");
+  const params = new URLSearchParams({
+    TrustedClientToken: TRUSTED_CLIENT_TOKEN,
+    "Sec-MS-GEC": sec,
+    "Sec-MS-GEC-Version": SEC_MS_GEC_VERSION,
+    ConnectionId: connectionId,
+  });
+  return `https://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?${params.toString()}`;
+}
 const EDGE_UA =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0";
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0";
 const EDGE_ORIGIN = "chrome-extension://jdiccldimpdaibmpdkjnbmckianbfold";
 
 const CORS = {
@@ -96,7 +127,8 @@ async function openTtsStream(
   voice: string,
   rate: string
 ): Promise<ReadableStream<Uint8Array>> {
-  const wsResp = await fetch(WSS_URL, {
+  const wsUrl = await buildTtsUrl();
+  const wsResp = await fetch(wsUrl, {
     headers: {
       Upgrade: "websocket",
       Origin: EDGE_ORIGIN,
@@ -104,16 +136,27 @@ async function openTtsStream(
     },
   });
   const ws = wsResp.webSocket;
-  if (!ws) throw new Error("WebSocket upgrade failed");
+  if (!ws) {
+    const bodyText = await wsResp.text().catch(() => "(no body)");
+    throw new Error(
+      `WebSocket upgrade failed: status=${wsResp.status} ${wsResp.statusText} body=${bodyText.slice(0, 400)}`
+    );
+  }
   ws.accept();
 
   const requestId = crypto.randomUUID().replace(/-/g, "");
 
+  // rany2/edge-tts uses the JS `Date.prototype.toString()` format
+  // ("Mon Jan 01 2024 00:00:00 GMT+0000 (Coordinated Universal Time)") and
+  // appends a trailing CRLF after the SSML body — Microsoft silently emits no
+  // audio frames if either is off.
+  const timestamp = new Date().toString();
+
   const configMsg =
-    `X-Timestamp:${new Date().toISOString()}\r\n` +
+    `X-Timestamp:${timestamp}\r\n` +
     `Content-Type:application/json; charset=utf-8\r\n` +
     `Path:speech.config\r\n\r\n` +
-    `{"context":{"synthesis":{"audio":{"metadataoptions":{"sentenceBoundaryEnabled":"false","wordBoundaryEnabled":"false"},"outputFormat":"audio-24khz-48kbitrate-mono-mp3"}}}}`;
+    `{"context":{"synthesis":{"audio":{"metadataoptions":{"sentenceBoundaryEnabled":"false","wordBoundaryEnabled":"false"},"outputFormat":"audio-24khz-48kbitrate-mono-mp3"}}}}\r\n`;
   ws.send(configMsg);
 
   const ssml =
@@ -124,35 +167,48 @@ async function openTtsStream(
   const ssmlMsg =
     `X-RequestId:${requestId}\r\n` +
     `Content-Type:application/ssml+xml\r\n` +
-    `X-Timestamp:${new Date().toISOString()}Z\r\n` +
-    `Path:ssml\r\n\r\n${ssml}`;
+    `X-Timestamp:${timestamp}Z\r\n` +
+    `Path:ssml\r\n\r\n${ssml}\r\n`;
   ws.send(ssmlMsg);
 
   return new ReadableStream<Uint8Array>({
     start(controller) {
+      // Serialize the async Blob → ArrayBuffer conversion so audio frames
+      // arrive in order even if the runtime delivers them concurrently.
+      let pending: Promise<void> = Promise.resolve();
+
       ws.addEventListener("message", (event: MessageEvent) => {
         const data = event.data;
         if (typeof data === "string") {
           if (data.includes("Path:turn.end")) {
-            controller.close();
-            try { ws.close(); } catch {}
+            pending = pending.then(() => {
+              try { controller.close(); } catch {}
+              try { ws.close(); } catch {}
+            });
           }
           return;
         }
-        // Binary frame: 2-byte big-endian header length, header text, audio bytes.
-        const buf =
-          data instanceof ArrayBuffer ? new Uint8Array(data) : new Uint8Array(data as ArrayBufferLike);
-        if (buf.byteLength < 2) return;
-        const headerLen = (buf[0] << 8) | buf[1];
-        const audioStart = 2 + headerLen;
-        if (audioStart >= buf.byteLength) return;
-        controller.enqueue(buf.slice(audioStart));
+
+        // Binary frame layout: 2-byte big-endian header length, header text,
+        // audio bytes. Cloudflare Workers deliver binary WS frames as Blob.
+        pending = pending.then(async () => {
+          const ab =
+            data instanceof ArrayBuffer
+              ? data
+              : await (data as Blob).arrayBuffer();
+          const buf = new Uint8Array(ab);
+          if (buf.byteLength < 2) return;
+          const headerLen = (buf[0] << 8) | buf[1];
+          const audioStart = 2 + headerLen;
+          if (audioStart >= buf.byteLength) return;
+          try { controller.enqueue(buf.slice(audioStart)); } catch {}
+        });
       });
       ws.addEventListener("close", () => {
         try { controller.close(); } catch {}
       });
-      ws.addEventListener("error", (e: Event) => {
-        try { controller.error(new Error(`upstream ws error: ${String(e)}`)); } catch {}
+      ws.addEventListener("error", () => {
+        try { controller.error(new Error("upstream ws error")); } catch {}
       });
     },
     cancel() {
