@@ -125,14 +125,31 @@ export default function SpeechReader({
     if (voice) {
       utterance.voice = voice;
       utterance.lang = voice.lang;
-    } else {
-      utterance.lang = langRef.current;
     }
+    // If no voice matched, leave lang/voice unset — Chrome will pick its OS
+    // default. Setting `lang` to a code with no matching voice causes the
+    // `language-unavailable` error and the utterance is dropped.
     utterance.rate = 1.0;
     utterance.pitch = 1.0;
     utterance.onend = () => speakNextChunk();
-    utterance.onerror = (e) => {
-      console.error("[SpeechReader] utterance error", e);
+    utterance.onerror = (e: SpeechSynthesisErrorEvent) => {
+      // `canceled` and `interrupted` are normal when the user hits Stop or
+      // navigates away — don't treat as a real error.
+      if (e.error === "canceled" || e.error === "interrupted") {
+        stopHeartbeat();
+        setStatus("idle");
+        return;
+      }
+      console.error(
+        "[SpeechReader] utterance error:",
+        e.error,
+        "| voice:",
+        voice?.name ?? "(default)",
+        "| lang:",
+        utterance.lang || "(unset)",
+        "| chunk:",
+        JSON.stringify(next.slice(0, 80))
+      );
       queueRef.current = [];
       stopHeartbeat();
       setStatus("idle");
