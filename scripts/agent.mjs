@@ -31,7 +31,7 @@ const apiKey = process.env.XAI_API_KEY;
 const ghToken = process.env.GH_TOKEN;
 const repo = process.env.REPO;
 const taskType = process.env.TASK_TYPE;
-const model = process.env.GROK_MODEL ?? "grok-3";
+const model = process.env.GROK_MODEL?.trim() || "grok-3";
 
 if (!apiKey) {
   console.error("XAI_API_KEY missing. Refusing to run.");
