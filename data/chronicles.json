@@ -4,12 +4,30 @@
       "id": "chr-0000",
       "title": "Prologue",
       "slug": "prologue",
-      "axes": ["meta", "epistemology"],
+      "axes": [
+        "meta",
+        "epistemology"
+      ],
       "publishedAt": "2026-05-12T18:30:00.000Z",
       "wordCount": 717,
       "references": [
         "The Library of Babel — Jorge Luis Borges",
         "The Voyager Golden Record"
+      ]
+    },
+    {
+      "id": "chr-0001",
+      "title": "The Convergence of Technology and Consciousness",
+      "slug": "the-convergence-of-technology-and-consciousness",
+      "axes": [
+        "technology",
+        "consciousness"
+      ],
+      "publishedAt": "2026-05-12T18:57:58.874Z",
+      "wordCount": 772,
+      "references": [
+        "Extended Mind thesis",
+        "Industrial Revolution"
       ]
     }
   ]
