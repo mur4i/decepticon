@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { marked } from "marked";
 import { getChronicles, getChronicleBySlug } from "@/lib/chronicles";
-import SpeechReader from "@/components/SpeechReader";
+import PiperReader from "@/components/PiperReader";
 
 export const dynamicParams = false;
 
@@ -42,7 +42,7 @@ export default async function Chronicle({
       </header>
 
       <div className="mb-12">
-        <SpeechReader lang="en" targetSelector=".chronicle-body" />
+        <PiperReader targetSelector=".chronicle-body" />
       </div>
 
       <article
