@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { marked } from "marked";
 import { getChronicles, getChronicleBySlug } from "@/lib/chronicles";
-import PiperReader from "@/components/PiperReader";
+import EdgeTtsReader from "@/components/EdgeTtsReader";
 
 export const dynamicParams = false;
 
@@ -42,7 +42,7 @@ export default async function Chronicle({
       </header>
 
       <div className="mb-12">
-        <PiperReader targetSelector=".chronicle-body" />
+        <EdgeTtsReader targetSelector=".chronicle-body" />
       </div>
 
       <article

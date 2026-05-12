@@ -47,6 +47,7 @@ jobs:
       - name: Build static export
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_TTS_WORKER_URL: ${{ vars.NEXT_PUBLIC_TTS_WORKER_URL }}
         run: npm run build
 
       - name: Upload artifact
