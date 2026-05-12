@@ -84,6 +84,50 @@ export default function LanguageSwitcher() {
     return () => document.removeEventListener("mousedown", onClick);
   }, [open]);
 
+  // When viewing through Google's translate.goog proxy, Next.js client-side
+  // navigation bypasses Google's link-rewriting, so internal Link clicks land
+  // on the proxy domain without `_x_tr_*` params and the page fails to
+  // translate. Intercept same-origin clicks and force a full-page navigation
+  // that preserves the translate params.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!window.location.hostname.endsWith(TRANSLATE_DOMAIN)) return;
+    const currentParams = new URLSearchParams(window.location.search);
+
+    function onClickAnywhere(e: MouseEvent) {
+      if (e.defaultPrevented) return;
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const anchor = (e.target as Element | null)?.closest?.("a");
+      if (!anchor) return;
+      if (anchor.target && anchor.target !== "_self") return;
+      const href = anchor.getAttribute("href");
+      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      let url: URL;
+      try {
+        url = new URL(href, window.location.href);
+      } catch {
+        return;
+      }
+      if (url.origin !== window.location.origin) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const params = new URLSearchParams(url.search);
+      const linkHasTranslate = Array.from(params.keys()).some((k) => k.startsWith("_x_tr_"));
+      if (!linkHasTranslate) {
+        currentParams.forEach((v, k) => {
+          if (k.startsWith("_x_tr_")) params.set(k, v);
+        });
+      }
+      const qs = params.toString();
+      window.location.assign(`${url.origin}${url.pathname}${qs ? `?${qs}` : ""}${url.hash}`);
+    }
+
+    document.addEventListener("click", onClickAnywhere, true);
+    return () => document.removeEventListener("click", onClickAnywhere, true);
+  }, []);
+
   const display = current === "en" ? "EN" : current.toUpperCase();
 
   return (
