@@ -137,7 +137,7 @@ export default function LanguageSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="px-3.5 py-1.5 rounded-full text-xs uppercase tracking-[0.2em] text-white/70 bg-white/[0.06] backdrop-blur-xl border border-white/10 hover:bg-white/[0.1] hover:text-white transition"
+        className="px-3.5 py-1.5 rounded-full text-xs uppercase tracking-[0.2em] text-white/70 bg-white/6 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:text-white transition"
       >
         {display} <span className="text-white/40 ml-0.5">▾</span>
       </button>
@@ -156,8 +156,8 @@ export default function LanguageSwitcher() {
                   onClick={() => setOpen(false)}
                   className={`block px-3 py-2 rounded-xl text-sm font-light transition ${
                     active
-                      ? "text-white bg-white/[0.08]"
-                      : "text-white/60 hover:bg-white/[0.06] hover:text-white"
+                      ? "text-white bg-white/8"
+                      : "text-white/60 hover:bg-white/6 hover:text-white"
                   }`}
                 >
                   {l.label}

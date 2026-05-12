@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 type Status = "idle" | "playing" | "paused";
 
 const NEURAL_HINTS = /natural|online|premium|enhanced|neural|google|aria|jenny|antonio/i;
+const CHUNK_MAX = 180;
 
 function pickBestVoice(
   voices: SpeechSynthesisVoice[],
@@ -30,6 +31,39 @@ function currentTargetLang(fallback: string): string {
   return fallback;
 }
 
+// Chrome silently caps utterances at ~200 chars / ~15s. Split into chunks at
+// sentence/clause boundaries so each speak() stays well below the cliff.
+function chunkText(text: string, maxLen = CHUNK_MAX): string[] {
+  const parts = text
+    .replace(/\s+/g, " ")
+    .match(/[^.!?\n;:]+(?:[.!?\n;:]+|$)/g) ?? [text];
+  const chunks: string[] = [];
+  let buf = "";
+  for (const piece of parts) {
+    const p = piece.trim();
+    if (!p) continue;
+    if (p.length >= maxLen) {
+      if (buf) {
+        chunks.push(buf);
+        buf = "";
+      }
+      // Split overlong piece on word boundaries.
+      for (let i = 0; i < p.length; i += maxLen) {
+        chunks.push(p.slice(i, i + maxLen).trim());
+      }
+      continue;
+    }
+    if (buf.length + 1 + p.length > maxLen) {
+      chunks.push(buf);
+      buf = p;
+    } else {
+      buf = buf ? `${buf} ${p}` : p;
+    }
+  }
+  if (buf) chunks.push(buf);
+  return chunks;
+}
+
 export default function SpeechReader({
   lang = "en",
   targetSelector = ".chronicle-body",
@@ -40,7 +74,10 @@ export default function SpeechReader({
   const [status, setStatus] = useState<Status>("idle");
   const [supported, setSupported] = useState(true);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const queueRef = useRef<string[]>([]);
+  const voiceRef = useRef<SpeechSynthesisVoice | null>(null);
+  const langRef = useRef<string>(lang);
+  const heartbeatRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -54,51 +91,104 @@ export default function SpeechReader({
     return () => {
       window.speechSynthesis.removeEventListener("voiceschanged", load);
       window.speechSynthesis.cancel();
+      if (heartbeatRef.current) clearInterval(heartbeatRef.current);
     };
   }, []);
+
+  function stopHeartbeat() {
+    if (heartbeatRef.current) {
+      clearInterval(heartbeatRef.current);
+      heartbeatRef.current = null;
+    }
+  }
+
+  function startHeartbeat() {
+    stopHeartbeat();
+    // Chromium also stops mid-stream after ~15s; pause/resume re-arms it.
+    heartbeatRef.current = setInterval(() => {
+      const ss = window.speechSynthesis;
+      if (!ss.speaking) return;
+      ss.pause();
+      ss.resume();
+    }, 12000);
+  }
+
+  function speakNextChunk() {
+    const next = queueRef.current.shift();
+    if (!next) {
+      stopHeartbeat();
+      setStatus("idle");
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(next);
+    const voice = voiceRef.current;
+    if (voice) {
+      utterance.voice = voice;
+      utterance.lang = voice.lang;
+    } else {
+      utterance.lang = langRef.current;
+    }
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    utterance.onend = () => speakNextChunk();
+    utterance.onerror = (e) => {
+      console.error("[SpeechReader] utterance error", e);
+      queueRef.current = [];
+      stopHeartbeat();
+      setStatus("idle");
+    };
+    window.speechSynthesis.speak(utterance);
+  }
 
   function start() {
     if (!supported) return;
     const el = document.querySelector(targetSelector) as HTMLElement | null;
     const text = el?.innerText?.trim();
-    if (!text) return;
+    if (!text) {
+      console.warn("[SpeechReader] no text to read at", targetSelector);
+      return;
+    }
+
+    const currentVoices = window.speechSynthesis.getVoices();
+    const targetLang = currentTargetLang(lang);
+    voiceRef.current = pickBestVoice(currentVoices, targetLang);
+    langRef.current = targetLang;
+    queueRef.current = chunkText(text);
 
     window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    const targetLang = currentTargetLang(lang);
-    const voice = pickBestVoice(voices, targetLang);
-    if (voice) {
-      utterance.voice = voice;
-      utterance.lang = voice.lang;
-    } else {
-      utterance.lang = targetLang;
-    }
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-    utterance.onend = () => setStatus("idle");
-    utterance.onerror = () => setStatus("idle");
-    utterRef.current = utterance;
-    window.speechSynthesis.speak(utterance);
     setStatus("playing");
+    startHeartbeat();
+    speakNextChunk();
   }
 
   function pause() {
     window.speechSynthesis.pause();
+    stopHeartbeat();
     setStatus("paused");
   }
   function resume() {
     window.speechSynthesis.resume();
+    startHeartbeat();
     setStatus("playing");
   }
   function stop() {
+    queueRef.current = [];
+    stopHeartbeat();
     window.speechSynthesis.cancel();
     setStatus("idle");
   }
 
+  // voices change asynchronously; keep voiceRef updated if user hasn't started yet
+  useEffect(() => {
+    if (status === "idle") {
+      voiceRef.current = pickBestVoice(voices, currentTargetLang(lang));
+    }
+  }, [voices, lang, status]);
+
   if (!supported) return null;
 
   const pillBase =
-    "px-3.5 py-1.5 rounded-full text-xs uppercase tracking-[0.2em] font-light bg-white/[0.06] backdrop-blur-xl border border-white/10 transition";
+    "px-3.5 py-1.5 rounded-full text-xs uppercase tracking-[0.2em] font-light bg-white/6 backdrop-blur-xl border border-white/10 transition";
 
   return (
     <div className="inline-flex items-center gap-2">
@@ -106,7 +196,7 @@ export default function SpeechReader({
         <button
           type="button"
           onClick={start}
-          className={`${pillBase} text-white/70 hover:bg-white/[0.1] hover:text-white`}
+          className={`${pillBase} text-white/70 hover:bg-white/10 hover:text-white`}
         >
           <span className="mr-1.5">▶</span>Listen
         </button>
@@ -116,7 +206,7 @@ export default function SpeechReader({
           <button
             type="button"
             onClick={pause}
-            className={`${pillBase} text-white/70 hover:bg-white/[0.1] hover:text-white`}
+            className={`${pillBase} text-white/70 hover:bg-white/10 hover:text-white`}
           >
             <span className="mr-1.5">❚❚</span>Pause
           </button>
@@ -135,7 +225,7 @@ export default function SpeechReader({
           <button
             type="button"
             onClick={resume}
-            className={`${pillBase} text-white/70 hover:bg-white/[0.1] hover:text-white`}
+            className={`${pillBase} text-white/70 hover:bg-white/10 hover:text-white`}
           >
             <span className="mr-1.5">▶</span>Resume
           </button>
