@@ -57,3 +57,11 @@ jobs:
           TASK_TYPE: heal
           ROADBLOCK_ID: ${{ needs.pick.outputs.id }}
         run: node scripts/agent.mjs
+
+  deploy:
+    needs: heal
+    uses: ./.github/workflows/deploy.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
