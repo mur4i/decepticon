@@ -45,6 +45,22 @@
         "Information Age",
         "networked individualism"
       ]
+    },
+    {
+      "id": "chr-0003",
+      "title": "The Interplay of Economy and Ecology",
+      "slug": "the-interplay-of-economy-and-ecology",
+      "axes": [
+        "economy",
+        "ecology",
+        "culture"
+      ],
+      "publishedAt": "2026-05-13T11:37:16.555Z",
+      "wordCount": 720,
+      "references": [
+        "Karl Marx",
+        "Agroecology"
+      ]
     }
   ]
 }
