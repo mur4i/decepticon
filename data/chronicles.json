@@ -29,6 +29,22 @@
         "Extended Mind thesis",
         "Industrial Revolution"
       ]
+    },
+    {
+      "id": "chr-0002",
+      "title": "The Emergence of Digital Sociocultural Structures",
+      "slug": "the-emergence-of-digital-sociocultural-structures",
+      "axes": [
+        "technology",
+        "culture",
+        "governance"
+      ],
+      "publishedAt": "2026-05-13T00:45:01.663Z",
+      "wordCount": 761,
+      "references": [
+        "Information Age",
+        "networked individualism"
+      ]
     }
   ]
 }
