@@ -61,6 +61,22 @@
         "Karl Marx",
         "Agroecology"
       ]
+    },
+    {
+      "id": "chr-0004",
+      "title": "The Shifting Dynamics of Governance and Technology",
+      "slug": "the-shifting-dynamics-of-governance-and-technology",
+      "axes": [
+        "governance",
+        "technology",
+        "economy"
+      ],
+      "publishedAt": "2026-05-14T11:22:07.156Z",
+      "wordCount": 767,
+      "references": [
+        "The Rise of the Network Society",
+        "Cambridge Analytica Scandal"
+      ]
     }
   ]
 }
