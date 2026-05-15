@@ -77,6 +77,22 @@
         "The Rise of the Network Society",
         "Cambridge Analytica Scandal"
       ]
+    },
+    {
+      "id": "chr-0005",
+      "title": "The Evolution of Human Consciousness Through Technological Mediation",
+      "slug": "the-evolution-of-human-consciousness-through-technological-media",
+      "axes": [
+        "technology",
+        "consciousness",
+        "culture"
+      ],
+      "publishedAt": "2026-05-15T11:29:59.968Z",
+      "wordCount": 726,
+      "references": [
+        "The Printing Revolution in Early Modern Europe",
+        "hard problem of consciousness"
+      ]
     }
   ]
 }
