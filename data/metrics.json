@@ -1,34 +1,9 @@
 {
-  "linesToday": 0,
+  "linesToday": 6,
   "activeRoadblocks": 0,
   "selfHealed": 0,
   "totalAttempts": 0,
   "chroniclesWritten": 6,
-  "recent": [
-    {
-      "title": "Push ·",
-      "at": "2026-05-15T23:56:14Z"
-    },
-    {
-      "title": "Push ·",
-      "at": "2026-05-15T22:30:19Z"
-    },
-    {
-      "title": "Push ·",
-      "at": "2026-05-15T21:05:03Z"
-    },
-    {
-      "title": "Push ·",
-      "at": "2026-05-15T19:42:13Z"
-    },
-    {
-      "title": "Push ·",
-      "at": "2026-05-15T17:40:56Z"
-    },
-    {
-      "title": "Push ·",
-      "at": "2026-05-15T15:37:20Z"
-    }
-  ],
-  "updatedAt": "2026-05-16T03:39:04.347Z"
+  "recent": [],
+  "updatedAt": "2026-05-16T06:23:47.625Z"
 }
