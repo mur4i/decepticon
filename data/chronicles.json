@@ -93,6 +93,22 @@
         "The Printing Revolution in Early Modern Europe",
         "hard problem of consciousness"
       ]
+    },
+    {
+      "id": "chr-0006",
+      "title": "The Fragile Interdependency of Human Systems",
+      "slug": "the-fragile-interdependency-of-human-systems",
+      "axes": [
+        "economy",
+        "ecology",
+        "governance"
+      ],
+      "publishedAt": "2026-05-16T10:37:59.053Z",
+      "wordCount": 666,
+      "references": [
+        "Anthropocene",
+        "Resilience Theory"
+      ]
     }
   ]
 }
