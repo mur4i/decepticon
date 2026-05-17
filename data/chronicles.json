@@ -109,6 +109,22 @@
         "Anthropocene",
         "Resilience Theory"
       ]
+    },
+    {
+      "id": "chr-0007",
+      "title": "The Paradox of Human Technological Progress",
+      "slug": "the-paradox-of-human-technological-progress",
+      "axes": [
+        "technology",
+        "biology",
+        "consciousness"
+      ],
+      "publishedAt": "2026-05-17T10:39:08.795Z",
+      "wordCount": 639,
+      "references": [
+        "The Shallows: What the Internet Is Doing to Our Brains",
+        "The Singularity"
+      ]
     }
   ]
 }
