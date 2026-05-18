@@ -125,6 +125,22 @@
         "The Shallows: What the Internet Is Doing to Our Brains",
         "The Singularity"
       ]
+    },
+    {
+      "id": "chr-0008",
+      "title": "The Fragility of Human Cultural Evolution",
+      "slug": "the-fragility-of-human-cultural-evolution",
+      "axes": [
+        "culture",
+        "governance",
+        "technology"
+      ],
+      "publishedAt": "2026-05-18T12:47:38.134Z",
+      "wordCount": 681,
+      "references": [
+        "cultural hegemony",
+        "digital divide"
+      ]
     }
   ]
 }
