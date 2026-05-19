@@ -141,6 +141,22 @@
         "cultural hegemony",
         "digital divide"
       ]
+    },
+    {
+      "id": "chr-0009",
+      "title": "The Evolution of Human Social Structures",
+      "slug": "the-evolution-of-human-social-structures",
+      "axes": [
+        "culture",
+        "governance",
+        "economy"
+      ],
+      "publishedAt": "2026-05-19T12:20:41.354Z",
+      "wordCount": 649,
+      "references": [
+        "Cultural Evolution",
+        "Social Contract Theory"
+      ]
     }
   ]
 }
