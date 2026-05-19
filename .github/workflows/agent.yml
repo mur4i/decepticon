@@ -12,6 +12,12 @@ permissions:
   pull-requests: write
   models: read
 
+# One in-flight run per issue. A new comment supersedes the previous attempt
+# so we don't double-work or burn duplicate Models calls.
+concurrency:
+  group: agent-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
 jobs:
   respond:
     if: |

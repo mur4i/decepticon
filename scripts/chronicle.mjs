@@ -195,10 +195,25 @@ writeFileSync(
 
 console.log(`Wrote ${mdPath} (${wc} words, ${id}).`);
 
+// Refresh dashboard metrics in the same commit so we don't need a separate
+// scheduled workflow. compute-metrics.mjs writes data/metrics.json in place.
+try {
+  run("node", ["scripts/compute-metrics.mjs"]);
+} catch (err) {
+  console.warn(
+    `Metrics recompute failed (non-fatal): ${err instanceof Error ? err.message : String(err)}`
+  );
+}
+
 if (process.env.GITHUB_ACTIONS) {
   run("git", ["config", "user.name", "decepticon-bot"]);
   run("git", ["config", "user.email", "bot@decepticon.local"]);
-  run("git", ["add", `chronicles/${slug}.md`, "data/chronicles.json"]);
+  run("git", [
+    "add",
+    `chronicles/${slug}.md`,
+    "data/chronicles.json",
+    "data/metrics.json",
+  ]);
   run("git", ["commit", "-m", `chronicle(${id}): ${out.title}`]);
   run("git", ["push"]);
   console.log("Committed and pushed.");

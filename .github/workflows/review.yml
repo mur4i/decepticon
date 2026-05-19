@@ -9,6 +9,11 @@ permissions:
   pull-requests: write
   models: read
 
+# Force-pushes and rapid sync events on the same PR collapse to a single run.
+concurrency:
+  group: review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   review:
     if: github.actor != 'decepticon-bot'
