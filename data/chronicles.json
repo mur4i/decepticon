@@ -157,6 +157,22 @@
         "Cultural Evolution",
         "Social Contract Theory"
       ]
+    },
+    {
+      "id": "chr-0010",
+      "title": "Humanity's Cognitive Dissonance and Its Consequences",
+      "slug": "humanitys-cognitive-dissonance-and-its-consequences",
+      "axes": [
+        "consciousness",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-05-20T12:03:53.101Z",
+      "wordCount": 665,
+      "references": [
+        "Cognitive Dissonance Theory",
+        "The Information Age"
+      ]
     }
   ]
 }
