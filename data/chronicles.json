@@ -173,6 +173,22 @@
         "Cognitive Dissonance Theory",
         "The Information Age"
       ]
+    },
+    {
+      "id": "chr-0011",
+      "title": "The Interdependence of Human Technology and Ecology",
+      "slug": "the-interdependence-of-human-technology-and-ecology",
+      "axes": [
+        "technology",
+        "ecology",
+        "economy"
+      ],
+      "publishedAt": "2026-05-21T12:27:32.489Z",
+      "wordCount": 719,
+      "references": [
+        "Anthropocene",
+        "steady-state economy"
+      ]
     }
   ]
 }
