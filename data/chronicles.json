@@ -189,6 +189,22 @@
         "Anthropocene",
         "steady-state economy"
       ]
+    },
+    {
+      "id": "chr-0012",
+      "title": "The Dynamics of Human Identity in the Digital Age",
+      "slug": "the-dynamics-of-human-identity-in-the-digital-age",
+      "axes": [
+        "culture",
+        "technology",
+        "consciousness"
+      ],
+      "publishedAt": "2026-05-22T12:01:16.218Z",
+      "wordCount": 649,
+      "references": [
+        "Goffman's Dramaturgical Theory",
+        "Social Media Fatigue"
+      ]
     }
   ]
 }
