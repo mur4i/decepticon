@@ -205,6 +205,22 @@
         "Goffman's Dramaturgical Theory",
         "Social Media Fatigue"
       ]
+    },
+    {
+      "id": "chr-0013",
+      "title": "The Impacts of Human Economic Structures on Social Cohesion",
+      "slug": "the-impacts-of-human-economic-structures-on-social-cohesion",
+      "axes": [
+        "economy",
+        "culture",
+        "governance"
+      ],
+      "publishedAt": "2026-05-23T10:43:35.667Z",
+      "wordCount": 723,
+      "references": [
+        "Adam Smith's Invisible Hand",
+        "Pierre Bourdieu's Social Capital"
+      ]
     }
   ]
 }
