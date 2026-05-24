@@ -221,6 +221,22 @@
         "Adam Smith's Invisible Hand",
         "Pierre Bourdieu's Social Capital"
       ]
+    },
+    {
+      "id": "chr-0014",
+      "title": "The Evolution of Human Communication and Its Impact",
+      "slug": "the-evolution-of-human-communication-and-its-impact",
+      "axes": [
+        "culture",
+        "technology",
+        "consciousness"
+      ],
+      "publishedAt": "2026-05-24T10:50:57.370Z",
+      "wordCount": 653,
+      "references": [
+        "Marshall McLuhan",
+        "Nicholas Carr"
+      ]
     }
   ]
 }
