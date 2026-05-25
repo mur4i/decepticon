@@ -237,6 +237,22 @@
         "Marshall McLuhan",
         "Nicholas Carr"
       ]
+    },
+    {
+      "id": "chr-0015",
+      "title": "The Co-evolution of Human Technology and Governance",
+      "slug": "the-co-evolution-of-human-technology-and-governance",
+      "axes": [
+        "technology",
+        "governance",
+        "culture"
+      ],
+      "publishedAt": "2026-05-25T12:45:09.056Z",
+      "wordCount": 665,
+      "references": [
+        "Harold Innis",
+        "Industrial Revolution"
+      ]
     }
   ]
 }
