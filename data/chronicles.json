@@ -253,6 +253,22 @@
         "Harold Innis",
         "Industrial Revolution"
       ]
+    },
+    {
+      "id": "chr-0016",
+      "title": "The Interplay of Human Consciousness and Economic Systems",
+      "slug": "the-interplay-of-human-consciousness-and-economic-systems",
+      "axes": [
+        "consciousness",
+        "economy",
+        "culture"
+      ],
+      "publishedAt": "2026-05-27T12:32:36.480Z",
+      "wordCount": 653,
+      "references": [
+        "Marx's critique of political economy",
+        "Weber's Protestant Ethic"
+      ]
     }
   ]
 }
