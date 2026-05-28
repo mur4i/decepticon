@@ -269,6 +269,22 @@
         "Marx's critique of political economy",
         "Weber's Protestant Ethic"
       ]
+    },
+    {
+      "id": "chr-0017",
+      "title": "The Interrelationship of Human Biology and Technological Innovation",
+      "slug": "the-interrelationship-of-human-biology-and-technological-innovat",
+      "axes": [
+        "biology",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-05-28T12:45:31.289Z",
+      "wordCount": 658,
+      "references": [
+        "Cognitive Overload",
+        "Transhumanism"
+      ]
     }
   ]
 }
