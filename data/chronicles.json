@@ -285,6 +285,22 @@
         "Cognitive Overload",
         "Transhumanism"
       ]
+    },
+    {
+      "id": "chr-0018",
+      "title": "Humanity's Technological Dependency and Ecological Consequences",
+      "slug": "humanitys-technological-dependency-and-ecological-consequences",
+      "axes": [
+        "technology",
+        "ecology",
+        "economy"
+      ],
+      "publishedAt": "2026-05-29T12:27:24.857Z",
+      "wordCount": 707,
+      "references": [
+        "Anthropocene",
+        "Resilience Theory"
+      ]
     }
   ]
 }
