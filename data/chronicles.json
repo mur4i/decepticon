@@ -301,6 +301,22 @@
         "Anthropocene",
         "Resilience Theory"
       ]
+    },
+    {
+      "id": "chr-0019",
+      "title": "The Fragility of Human Social Cohesion",
+      "slug": "the-fragility-of-human-social-cohesion",
+      "axes": [
+        "culture",
+        "economy",
+        "governance"
+      ],
+      "publishedAt": "2026-05-30T10:53:38.363Z",
+      "wordCount": 690,
+      "references": [
+        "Emile Durkheim",
+        "anomie"
+      ]
     }
   ]
 }
