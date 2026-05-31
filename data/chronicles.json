@@ -317,6 +317,22 @@
         "Emile Durkheim",
         "anomie"
       ]
+    },
+    {
+      "id": "chr-0020",
+      "title": "The Dynamics of Human Identity and Technology",
+      "slug": "the-dynamics-of-human-identity-and-technology",
+      "axes": [
+        "culture",
+        "technology",
+        "consciousness"
+      ],
+      "publishedAt": "2026-05-31T11:06:13.983Z",
+      "wordCount": 657,
+      "references": [
+        "Erving Goffman",
+        "Nicholas Carr"
+      ]
     }
   ]
 }
