@@ -333,6 +333,22 @@
         "Erving Goffman",
         "Nicholas Carr"
       ]
+    },
+    {
+      "id": "chr-0021",
+      "title": "The Evolution of Human Governance and Technological Influence",
+      "slug": "the-evolution-of-human-governance-and-technological-influence",
+      "axes": [
+        "governance",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-06-01T15:34:06.102Z",
+      "wordCount": 513,
+      "references": [
+        "technocracy",
+        "digital governance"
+      ]
     }
   ]
 }
