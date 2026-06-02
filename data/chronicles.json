@@ -349,6 +349,22 @@
         "technocracy",
         "digital governance"
       ]
+    },
+    {
+      "id": "chr-0022",
+      "title": "The Evolution of Human Work and Technological Integration",
+      "slug": "the-evolution-of-human-work-and-technological-integration",
+      "axes": [
+        "economy",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-06-02T12:51:20.148Z",
+      "wordCount": 668,
+      "references": [
+        "Karl Marx",
+        "gig economy"
+      ]
     }
   ]
 }
