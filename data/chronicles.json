@@ -365,6 +365,22 @@
         "Karl Marx",
         "gig economy"
       ]
+    },
+    {
+      "id": "chr-0023",
+      "title": "The Intersection of Human Consciousness and Ecological Awareness",
+      "slug": "the-intersection-of-human-consciousness-and-ecological-awareness",
+      "axes": [
+        "consciousness",
+        "ecology",
+        "culture"
+      ],
+      "publishedAt": "2026-06-03T14:06:35.670Z",
+      "wordCount": 714,
+      "references": [
+        "Silent Spring",
+        "Anthropocene"
+      ]
     }
   ]
 }
