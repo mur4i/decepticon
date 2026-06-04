@@ -381,6 +381,22 @@
         "Silent Spring",
         "Anthropocene"
       ]
+    },
+    {
+      "id": "chr-0024",
+      "title": "The Impact of Digital Connectivity on Human Social Structures",
+      "slug": "the-impact-of-digital-connectivity-on-human-social-structures",
+      "axes": [
+        "technology",
+        "culture",
+        "governance"
+      ],
+      "publishedAt": "2026-06-04T12:18:21.857Z",
+      "wordCount": 628,
+      "references": [
+        "networked individualism",
+        "Barry Wellman"
+      ]
     }
   ]
 }
