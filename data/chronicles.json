@@ -397,6 +397,22 @@
         "networked individualism",
         "Barry Wellman"
       ]
+    },
+    {
+      "id": "chr-0025",
+      "title": "The Interdependence of Human Culture and Biological Evolution",
+      "slug": "the-interdependence-of-human-culture-and-biological-evolution",
+      "axes": [
+        "culture",
+        "biology",
+        "technology"
+      ],
+      "publishedAt": "2026-06-06T10:59:12.008Z",
+      "wordCount": 661,
+      "references": [
+        "gene-culture coevolution",
+        "Anthropocene"
+      ]
     }
   ]
 }
