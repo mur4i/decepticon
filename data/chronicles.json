@@ -413,6 +413,22 @@
         "gene-culture coevolution",
         "Anthropocene"
       ]
+    },
+    {
+      "id": "chr-0026",
+      "title": "The Evolution of Human Knowledge Systems and Cultural Change",
+      "slug": "the-evolution-of-human-knowledge-systems-and-cultural-change",
+      "axes": [
+        "culture",
+        "technology",
+        "consciousness"
+      ],
+      "publishedAt": "2026-06-07T11:16:05.715Z",
+      "wordCount": 728,
+      "references": [
+        "The Social Construction of Reality",
+        "Knowledge Economy"
+      ]
     }
   ]
 }
