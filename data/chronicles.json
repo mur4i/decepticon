@@ -429,6 +429,22 @@
         "The Social Construction of Reality",
         "Knowledge Economy"
       ]
+    },
+    {
+      "id": "chr-0027",
+      "title": "The Interplay of Human Economy and Technological Disruption",
+      "slug": "the-interplay-of-human-economy-and-technological-disruption",
+      "axes": [
+        "economy",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-06-08T13:16:40.662Z",
+      "wordCount": 710,
+      "references": [
+        "Creative Destruction",
+        "Information Age"
+      ]
     }
   ]
 }
