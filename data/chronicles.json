@@ -445,6 +445,22 @@
         "Creative Destruction",
         "Information Age"
       ]
+    },
+    {
+      "id": "chr-0028",
+      "title": "Humanity's Fragile Technological Ecosystem",
+      "slug": "humanitys-fragile-technological-ecosystem",
+      "axes": [
+        "technology",
+        "ecology",
+        "economy"
+      ],
+      "publishedAt": "2026-06-09T12:15:29.940Z",
+      "wordCount": 706,
+      "references": [
+        "treadmill of production",
+        "Anthropocene"
+      ]
     }
   ]
 }
