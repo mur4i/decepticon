@@ -461,6 +461,22 @@
         "treadmill of production",
         "Anthropocene"
       ]
+    },
+    {
+      "id": "chr-0029",
+      "title": "Humanity's Evolving Relationship with Nature and Technology",
+      "slug": "humanitys-evolving-relationship-with-nature-and-technology",
+      "axes": [
+        "ecology",
+        "technology",
+        "consciousness"
+      ],
+      "publishedAt": "2026-06-10T12:35:56.657Z",
+      "wordCount": 763,
+      "references": [
+        "Anthropocene",
+        "sustainable development"
+      ]
     }
   ]
 }
