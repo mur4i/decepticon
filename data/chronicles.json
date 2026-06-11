@@ -477,6 +477,22 @@
         "Anthropocene",
         "sustainable development"
       ]
+    },
+    {
+      "id": "chr-0030",
+      "title": "The Evolution of Human Governance and Its Technological Underpinnings",
+      "slug": "the-evolution-of-human-governance-and-its-technological-underpin",
+      "axes": [
+        "governance",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-06-11T12:54:37.489Z",
+      "wordCount": 672,
+      "references": [
+        "panopticon",
+        "participatory culture"
+      ]
     }
   ]
 }
