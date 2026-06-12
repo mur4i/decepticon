@@ -493,6 +493,22 @@
         "panopticon",
         "participatory culture"
       ]
+    },
+    {
+      "id": "chr-0031",
+      "title": "The Dynamics of Human Identity in an Age of Digital Transformation",
+      "slug": "the-dynamics-of-human-identity-in-an-age-of-digital-transformati",
+      "axes": [
+        "technology",
+        "culture",
+        "consciousness"
+      ],
+      "publishedAt": "2026-06-12T12:30:18.886Z",
+      "wordCount": 694,
+      "references": [
+        "The Presentation of Self in Everyday Life",
+        "The Age of Surveillance Capitalism"
+      ]
     }
   ]
 }
