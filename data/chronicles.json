@@ -509,6 +509,22 @@
         "The Presentation of Self in Everyday Life",
         "The Age of Surveillance Capitalism"
       ]
+    },
+    {
+      "id": "chr-0032",
+      "title": "The Convergence of Human Biology and Technology",
+      "slug": "the-convergence-of-human-biology-and-technology",
+      "axes": [
+        "biology",
+        "technology",
+        "consciousness"
+      ],
+      "publishedAt": "2026-06-13T11:24:16.525Z",
+      "wordCount": 708,
+      "references": [
+        "transhumanism",
+        "brain-computer interfaces"
+      ]
     }
   ]
 }
