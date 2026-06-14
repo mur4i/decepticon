@@ -525,6 +525,22 @@
         "transhumanism",
         "brain-computer interfaces"
       ]
+    },
+    {
+      "id": "chr-0033",
+      "title": "The Interplay of Human Economy and Ecological Resilience",
+      "slug": "the-interplay-of-human-economy-and-ecological-resilience",
+      "axes": [
+        "economy",
+        "ecology",
+        "culture"
+      ],
+      "publishedAt": "2026-06-14T11:36:40.585Z",
+      "wordCount": 680,
+      "references": [
+        "Anthropocene",
+        "Ecological Resilience"
+      ]
     }
   ]
 }
