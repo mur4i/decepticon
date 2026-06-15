@@ -541,6 +541,23 @@
         "Anthropocene",
         "Ecological Resilience"
       ]
+    },
+    {
+      "id": "chr-0034",
+      "title": "The Evolution of Human Consciousness and Technological Mediation",
+      "slug": "the-evolution-of-human-consciousness-and-technological-mediation",
+      "axes": [
+        "consciousness",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-06-15T15:24:38.098Z",
+      "wordCount": 687,
+      "references": [
+        "Cognitive Revolution",
+        "Marshall McLuhan",
+        "Transhumanism"
+      ]
     }
   ]
 }
