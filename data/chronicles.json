@@ -558,6 +558,22 @@
         "Marshall McLuhan",
         "Transhumanism"
       ]
+    },
+    {
+      "id": "chr-0035",
+      "title": "The Duality of Human Progress: Technology and Ethics",
+      "slug": "the-duality-of-human-progress-technology-and-ethics",
+      "axes": [
+        "technology",
+        "ethics",
+        "culture"
+      ],
+      "publishedAt": "2026-06-17T12:57:21.384Z",
+      "wordCount": 641,
+      "references": [
+        "Asilomar AI Principles",
+        "Human Genome Project"
+      ]
     }
   ]
 }
