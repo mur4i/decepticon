@@ -574,6 +574,22 @@
         "Asilomar AI Principles",
         "Human Genome Project"
       ]
+    },
+    {
+      "id": "chr-0036",
+      "title": "The Fragility of Human Social Structures",
+      "slug": "the-fragility-of-human-social-structures",
+      "axes": [
+        "governance",
+        "economy",
+        "culture"
+      ],
+      "publishedAt": "2026-06-18T12:31:40.605Z",
+      "wordCount": 669,
+      "references": [
+        "populism",
+        "creative destruction"
+      ]
     }
   ]
 }
