@@ -590,6 +590,22 @@
         "populism",
         "creative destruction"
       ]
+    },
+    {
+      "id": "chr-0037",
+      "title": "The Impact of Digital Connectivity on Human Social Behavior",
+      "slug": "the-impact-of-digital-connectivity-on-human-social-behavior",
+      "axes": [
+        "technology",
+        "culture",
+        "governance"
+      ],
+      "publishedAt": "2026-06-19T12:53:56.092Z",
+      "wordCount": 585,
+      "references": [
+        "Eli Pariser",
+        "post-truth politics"
+      ]
     }
   ]
 }
