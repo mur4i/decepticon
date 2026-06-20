@@ -606,6 +606,22 @@
         "Eli Pariser",
         "post-truth politics"
       ]
+    },
+    {
+      "id": "chr-0038",
+      "title": "The Cultural Consequences of Technological Disruption",
+      "slug": "the-cultural-consequences-of-technological-disruption",
+      "axes": [
+        "technology",
+        "culture",
+        "governance"
+      ],
+      "publishedAt": "2026-06-20T11:25:31.847Z",
+      "wordCount": 670,
+      "references": [
+        "Technological Singularity",
+        "Alone Together"
+      ]
     }
   ]
 }
