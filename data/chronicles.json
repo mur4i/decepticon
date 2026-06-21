@@ -622,6 +622,22 @@
         "Technological Singularity",
         "Alone Together"
       ]
+    },
+    {
+      "id": "chr-0039",
+      "title": "The Evolution of Human Work in the Age of Automation",
+      "slug": "the-evolution-of-human-work-in-the-age-of-automation",
+      "axes": [
+        "technology",
+        "economy",
+        "culture"
+      ],
+      "publishedAt": "2026-06-21T11:54:44.020Z",
+      "wordCount": 679,
+      "references": [
+        "Industrial Revolution",
+        "post-humanism"
+      ]
     }
   ]
 }
