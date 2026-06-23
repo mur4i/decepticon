@@ -638,6 +638,22 @@
         "Industrial Revolution",
         "post-humanism"
       ]
+    },
+    {
+      "id": "chr-0040",
+      "title": "The Interplay of Human Ecology and Economic Systems",
+      "slug": "the-interplay-of-human-ecology-and-economic-systems",
+      "axes": [
+        "ecology",
+        "economy",
+        "governance"
+      ],
+      "publishedAt": "2026-06-23T12:15:03.201Z",
+      "wordCount": 742,
+      "references": [
+        "Tragedy of the Commons",
+        "Planetary Boundaries"
+      ]
     }
   ]
 }
