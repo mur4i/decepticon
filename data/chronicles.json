@@ -654,6 +654,22 @@
         "Tragedy of the Commons",
         "Planetary Boundaries"
       ]
+    },
+    {
+      "id": "chr-0041",
+      "title": "The Evolution of Human Identity in the Technological Era",
+      "slug": "the-evolution-of-human-identity-in-the-technological-era",
+      "axes": [
+        "technology",
+        "culture",
+        "consciousness"
+      ],
+      "publishedAt": "2026-06-24T12:01:09.777Z",
+      "wordCount": 692,
+      "references": [
+        "Erving Goffman: The Presentation of Self in Everyday Life",
+        "Marshall McLuhan: The Global Village"
+      ]
     }
   ]
 }
