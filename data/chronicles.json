@@ -670,6 +670,22 @@
         "Erving Goffman: The Presentation of Self in Everyday Life",
         "Marshall McLuhan: The Global Village"
       ]
+    },
+    {
+      "id": "chr-0042",
+      "title": "The Dynamics of Human Governance and Technological Evolution",
+      "slug": "the-dynamics-of-human-governance-and-technological-evolution",
+      "axes": [
+        "governance",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-06-25T11:49:53.838Z",
+      "wordCount": 674,
+      "references": [
+        "The Enlightenment",
+        "Digital Citizenship"
+      ]
     }
   ]
 }
