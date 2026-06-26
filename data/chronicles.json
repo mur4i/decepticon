@@ -686,6 +686,21 @@
         "The Enlightenment",
         "Digital Citizenship"
       ]
+    },
+    {
+      "id": "chr-0043",
+      "title": "The Interconnection of Human Culture and Biological Evolution",
+      "slug": "the-interconnection-of-human-culture-and-biological-evolution",
+      "axes": [
+        "culture",
+        "biology"
+      ],
+      "publishedAt": "2026-06-26T11:49:45.949Z",
+      "wordCount": 657,
+      "references": [
+        "gene-culture coevolution",
+        "Neolithic Revolution"
+      ]
     }
   ]
 }
