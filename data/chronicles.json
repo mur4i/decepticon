@@ -701,6 +701,21 @@
         "gene-culture coevolution",
         "Neolithic Revolution"
       ]
+    },
+    {
+      "id": "chr-0044",
+      "title": "The Interdependency of Human Economy and Consciousness",
+      "slug": "the-interdependency-of-human-economy-and-consciousness",
+      "axes": [
+        "economy",
+        "consciousness"
+      ],
+      "publishedAt": "2026-06-27T11:03:53.536Z",
+      "wordCount": 711,
+      "references": [
+        "Karl Marx",
+        "Byung-Chul Han"
+      ]
     }
   ]
 }
