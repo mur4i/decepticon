@@ -716,6 +716,21 @@
         "Karl Marx",
         "Byung-Chul Han"
       ]
+    },
+    {
+      "id": "chr-0045",
+      "title": "The Evolution of Human Consciousness and Technological Dependence",
+      "slug": "the-evolution-of-human-consciousness-and-technological-dependenc",
+      "axes": [
+        "consciousness",
+        "technology"
+      ],
+      "publishedAt": "2026-06-28T11:16:00.993Z",
+      "wordCount": 715,
+      "references": [
+        "The Blank Slate",
+        "global village"
+      ]
     }
   ]
 }
