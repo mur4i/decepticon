@@ -731,6 +731,22 @@
         "The Blank Slate",
         "global village"
       ]
+    },
+    {
+      "id": "chr-0046",
+      "title": "The Interplay of Human Technology and Ecology",
+      "slug": "the-interplay-of-human-technology-and-ecology",
+      "axes": [
+        "technology",
+        "ecology",
+        "economy"
+      ],
+      "publishedAt": "2026-06-29T13:15:27.561Z",
+      "wordCount": 686,
+      "references": [
+        "Anthropocene",
+        "Ecological Modernization"
+      ]
     }
   ]
 }
