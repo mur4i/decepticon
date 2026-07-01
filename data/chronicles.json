@@ -747,6 +747,22 @@
         "Anthropocene",
         "Ecological Modernization"
       ]
+    },
+    {
+      "id": "chr-0047",
+      "title": "The Evolution of Human Governance Structures",
+      "slug": "the-evolution-of-human-governance-structures",
+      "axes": [
+        "governance",
+        "economy",
+        "technology"
+      ],
+      "publishedAt": "2026-07-01T12:17:01.914Z",
+      "wordCount": 667,
+      "references": [
+        "John Locke",
+        "e-governance"
+      ]
     }
   ]
 }
