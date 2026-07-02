@@ -763,6 +763,22 @@
         "John Locke",
         "e-governance"
       ]
+    },
+    {
+      "id": "chr-0048",
+      "title": "The Rise of Digital Culture and Its Biological Implications",
+      "slug": "the-rise-of-digital-culture-and-its-biological-implications",
+      "axes": [
+        "culture",
+        "technology",
+        "biology"
+      ],
+      "publishedAt": "2026-07-02T11:43:15.857Z",
+      "wordCount": 685,
+      "references": [
+        "Marshall McLuhan",
+        "epigenetics"
+      ]
     }
   ]
 }
