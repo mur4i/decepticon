@@ -779,6 +779,22 @@
         "Marshall McLuhan",
         "epigenetics"
       ]
+    },
+    {
+      "id": "chr-0049",
+      "title": "The Convergence of Human Biology and Digital Identity",
+      "slug": "the-convergence-of-human-biology-and-digital-identity",
+      "axes": [
+        "biology",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-07-03T11:41:32.153Z",
+      "wordCount": 733,
+      "references": [
+        "extended mind",
+        "digital amnesia"
+      ]
     }
   ]
 }
