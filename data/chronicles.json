@@ -795,6 +795,22 @@
         "extended mind",
         "digital amnesia"
       ]
+    },
+    {
+      "id": "chr-0050",
+      "title": "The Feedback Loop of Technology and Human Consciousness",
+      "slug": "the-feedback-loop-of-technology-and-human-consciousness",
+      "axes": [
+        "technology",
+        "consciousness",
+        "culture"
+      ],
+      "publishedAt": "2026-07-04T11:00:28.754Z",
+      "wordCount": 701,
+      "references": [
+        "Erving Goffman",
+        "Neil Postman"
+      ]
     }
   ]
 }
