@@ -811,6 +811,21 @@
         "Erving Goffman",
         "Neil Postman"
       ]
+    },
+    {
+      "id": "chr-0051",
+      "title": "The Dependency of Human Economy on Technological Innovation",
+      "slug": "the-dependency-of-human-economy-on-technological-innovation",
+      "axes": [
+        "economy",
+        "technology"
+      ],
+      "publishedAt": "2026-07-05T11:13:09.978Z",
+      "wordCount": 678,
+      "references": [
+        "Industrial Revolution",
+        "gig economy"
+      ]
     }
   ]
 }
