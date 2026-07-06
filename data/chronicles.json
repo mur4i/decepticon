@@ -826,6 +826,22 @@
         "Industrial Revolution",
         "gig economy"
       ]
+    },
+    {
+      "id": "chr-0052",
+      "title": "The Evolution of Human Identity in the Digital Age",
+      "slug": "the-evolution-of-human-identity-in-the-digital-age",
+      "axes": [
+        "technology",
+        "culture",
+        "consciousness"
+      ],
+      "publishedAt": "2026-07-06T12:58:00.514Z",
+      "wordCount": 726,
+      "references": [
+        "Marshall McLuhan",
+        "social identity theory"
+      ]
     }
   ]
 }
