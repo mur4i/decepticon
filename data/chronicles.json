@@ -842,6 +842,22 @@
         "Marshall McLuhan",
         "social identity theory"
       ]
+    },
+    {
+      "id": "chr-0053",
+      "title": "The Fragility of Human Social Systems",
+      "slug": "the-fragility-of-human-social-systems",
+      "axes": [
+        "governance",
+        "economy",
+        "culture"
+      ],
+      "publishedAt": "2026-07-07T12:09:09.072Z",
+      "wordCount": 522,
+      "references": [
+        "Max Weber",
+        "Tipping Point"
+      ]
     }
   ]
 }
