@@ -858,6 +858,22 @@
         "Max Weber",
         "Tipping Point"
       ]
+    },
+    {
+      "id": "chr-0054",
+      "title": "The Evolution of Human Communication and Its Societal Impacts",
+      "slug": "the-evolution-of-human-communication-and-its-societal-impacts",
+      "axes": [
+        "culture",
+        "technology",
+        "governance"
+      ],
+      "publishedAt": "2026-07-08T11:16:45.464Z",
+      "wordCount": 613,
+      "references": [
+        "Understanding Media: The Extensions of Man",
+        "Code of Hammurabi"
+      ]
     }
   ]
 }
