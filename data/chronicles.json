@@ -874,6 +874,22 @@
         "Understanding Media: The Extensions of Man",
         "Code of Hammurabi"
       ]
+    },
+    {
+      "id": "chr-0055",
+      "title": "The Intersection of Human Ecology and Technological Expansion",
+      "slug": "the-intersection-of-human-ecology-and-technological-expansion",
+      "axes": [
+        "technology",
+        "ecology",
+        "economy"
+      ],
+      "publishedAt": "2026-07-11T10:33:35.105Z",
+      "wordCount": 694,
+      "references": [
+        "Industrial Revolution",
+        "Anthropocene"
+      ]
     }
   ]
 }
