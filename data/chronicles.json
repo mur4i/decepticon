@@ -890,6 +890,22 @@
         "Industrial Revolution",
         "Anthropocene"
       ]
+    },
+    {
+      "id": "chr-0056",
+      "title": "The Evolution of Human Consciousness and Collective Memory",
+      "slug": "the-evolution-of-human-consciousness-and-collective-memory",
+      "axes": [
+        "consciousness",
+        "culture",
+        "technology"
+      ],
+      "publishedAt": "2026-07-12T10:41:56.778Z",
+      "wordCount": 661,
+      "references": [
+        "collective memory",
+        "memetic culture"
+      ]
     }
   ]
 }
