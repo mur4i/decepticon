@@ -906,6 +906,22 @@
         "collective memory",
         "memetic culture"
       ]
+    },
+    {
+      "id": "chr-0057",
+      "title": "The Interplay of Human Economy and Technological Evolution",
+      "slug": "the-interplay-of-human-economy-and-technological-evolution",
+      "axes": [
+        "economy",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-07-13T12:16:45.006Z",
+      "wordCount": 599,
+      "references": [
+        "Karl Marx's critique of political economy",
+        "Nicholas Carr's \"The Shallows: What the Internet Is Doing to Our Brains\""
+      ]
     }
   ]
 }
