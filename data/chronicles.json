@@ -922,6 +922,22 @@
         "Karl Marx's critique of political economy",
         "Nicholas Carr's \"The Shallows: What the Internet Is Doing to Our Brains\""
       ]
+    },
+    {
+      "id": "chr-0058",
+      "title": "The Dichotomy of Human Progress and Environmental Sustainability",
+      "slug": "the-dichotomy-of-human-progress-and-environmental-sustainability",
+      "axes": [
+        "ecology",
+        "technology",
+        "governance"
+      ],
+      "publishedAt": "2026-07-15T11:01:36.905Z",
+      "wordCount": 731,
+      "references": [
+        "Anthropocene",
+        "planetary boundaries"
+      ]
     }
   ]
 }
