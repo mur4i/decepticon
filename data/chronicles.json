@@ -938,6 +938,22 @@
         "Anthropocene",
         "planetary boundaries"
       ]
+    },
+    {
+      "id": "chr-0059",
+      "title": "The Evolution of Human Governance and Technological Authority",
+      "slug": "the-evolution-of-human-governance-and-technological-authority",
+      "axes": [
+        "governance",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-07-16T11:11:46.291Z",
+      "wordCount": 697,
+      "references": [
+        "surveillance capitalism",
+        "e-governance"
+      ]
     }
   ]
 }
