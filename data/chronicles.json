@@ -954,6 +954,22 @@
         "surveillance capitalism",
         "e-governance"
       ]
+    },
+    {
+      "id": "chr-0060",
+      "title": "The Intersection of Human Identity and Technological Integration",
+      "slug": "the-intersection-of-human-identity-and-technological-integration",
+      "axes": [
+        "technology",
+        "culture",
+        "consciousness"
+      ],
+      "publishedAt": "2026-07-17T10:57:42.795Z",
+      "wordCount": 688,
+      "references": [
+        "extended mind",
+        "digital divide"
+      ]
     }
   ]
 }
