@@ -970,6 +970,22 @@
         "extended mind",
         "digital divide"
       ]
+    },
+    {
+      "id": "chr-0061",
+      "title": "The Dynamics of Human Resilience and Vulnerability",
+      "slug": "the-dynamics-of-human-resilience-and-vulnerability",
+      "axes": [
+        "biology",
+        "economy",
+        "culture"
+      ],
+      "publishedAt": "2026-07-18T10:39:50.992Z",
+      "wordCount": 711,
+      "references": [
+        "Resilience Theory",
+        "Technological Determinism"
+      ]
     }
   ]
 }
