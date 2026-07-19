@@ -986,6 +986,21 @@
         "Resilience Theory",
         "Technological Determinism"
       ]
+    },
+    {
+      "id": "chr-0062",
+      "title": "The Interdependence of Human Culture and Technological Evolution",
+      "slug": "the-interdependence-of-human-culture-and-technological-evolution",
+      "axes": [
+        "culture",
+        "technology"
+      ],
+      "publishedAt": "2026-07-19T10:42:34.586Z",
+      "wordCount": 683,
+      "references": [
+        "technological determinism",
+        "Marshall McLuhan"
+      ]
     }
   ]
 }
