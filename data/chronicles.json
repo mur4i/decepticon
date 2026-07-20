@@ -1001,6 +1001,22 @@
         "technological determinism",
         "Marshall McLuhan"
       ]
+    },
+    {
+      "id": "chr-0063",
+      "title": "The Convergence of Human Identity and Economic Structures",
+      "slug": "the-convergence-of-human-identity-and-economic-structures",
+      "axes": [
+        "culture",
+        "economy",
+        "consciousness"
+      ],
+      "publishedAt": "2026-07-20T11:57:53.698Z",
+      "wordCount": 620,
+      "references": [
+        "Karl Marx",
+        "Jean Baudrillard"
+      ]
     }
   ]
 }
