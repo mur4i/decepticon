@@ -1017,6 +1017,22 @@
         "Karl Marx",
         "Jean Baudrillard"
       ]
+    },
+    {
+      "id": "chr-0064",
+      "title": "The Evolution of Human Cooperation and Conflict",
+      "slug": "the-evolution-of-human-cooperation-and-conflict",
+      "axes": [
+        "culture",
+        "governance",
+        "biology"
+      ],
+      "publishedAt": "2026-07-21T11:18:08.917Z",
+      "wordCount": 731,
+      "references": [
+        "game theory",
+        "prisoner's dilemma"
+      ]
     }
   ]
 }
