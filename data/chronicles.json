@@ -1033,6 +1033,22 @@
         "game theory",
         "prisoner's dilemma"
       ]
+    },
+    {
+      "id": "chr-0065",
+      "title": "The Nexus of Human Emotion and Technological Mediation",
+      "slug": "the-nexus-of-human-emotion-and-technological-mediation",
+      "axes": [
+        "technology",
+        "consciousness",
+        "culture"
+      ],
+      "publishedAt": "2026-07-22T11:19:36.234Z",
+      "wordCount": 674,
+      "references": [
+        "emotional labor",
+        "Arlie Hochschild"
+      ]
     }
   ]
 }
