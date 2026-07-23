@@ -1049,6 +1049,22 @@
         "emotional labor",
         "Arlie Hochschild"
       ]
+    },
+    {
+      "id": "chr-0066",
+      "title": "The Complexity of Human Trust and Technological Dependency",
+      "slug": "the-complexity-of-human-trust-and-technological-dependency",
+      "axes": [
+        "culture",
+        "technology",
+        "governance"
+      ],
+      "publishedAt": "2026-07-23T11:19:46.900Z",
+      "wordCount": 664,
+      "references": [
+        "Francis Fukuyama",
+        "Trust: The Social Virtues and the Creation of Prosperity"
+      ]
     }
   ]
 }
