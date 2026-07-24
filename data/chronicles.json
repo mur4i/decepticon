@@ -1065,6 +1065,22 @@
         "Francis Fukuyama",
         "Trust: The Social Virtues and the Creation of Prosperity"
       ]
+    },
+    {
+      "id": "chr-0067",
+      "title": "The Fragility of Human Systems and Technological Integration",
+      "slug": "the-fragility-of-human-systems-and-technological-integration",
+      "axes": [
+        "technology",
+        "governance",
+        "ecology"
+      ],
+      "publishedAt": "2026-07-24T11:12:28.675Z",
+      "wordCount": 759,
+      "references": [
+        "Industrial Revolution",
+        "Anthropocene"
+      ]
     }
   ]
 }
