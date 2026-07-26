@@ -1097,6 +1097,22 @@
         "Marshall McLuhan",
         "Elinor Ostrom"
       ]
+    },
+    {
+      "id": "chr-0069",
+      "title": "The Evolution of Human Social Structures and Technological Ascendancy",
+      "slug": "the-evolution-of-human-social-structures-and-technological-ascen",
+      "axes": [
+        "society",
+        "technology",
+        "economy"
+      ],
+      "publishedAt": "2026-07-26T10:52:58.407Z",
+      "wordCount": 636,
+      "references": [
+        "social constructivism",
+        "Industrial Revolution"
+      ]
     }
   ]
 }
