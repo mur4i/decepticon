@@ -1113,6 +1113,22 @@
         "social constructivism",
         "Industrial Revolution"
       ]
+    },
+    {
+      "id": "chr-0070",
+      "title": "The Complex Interplay of Human Governance and Technological Evolution",
+      "slug": "the-complex-interplay-of-human-governance-and-technological-evol",
+      "axes": [
+        "governance",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-07-27T12:35:50.576Z",
+      "wordCount": 700,
+      "references": [
+        "Marshall McLuhan",
+        "technological determinism"
+      ]
     }
   ]
 }
