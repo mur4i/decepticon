@@ -1129,6 +1129,22 @@
         "Marshall McLuhan",
         "technological determinism"
       ]
+    },
+    {
+      "id": "chr-0071",
+      "title": "The Evolution of Human Economy and Technological Transformation",
+      "slug": "the-evolution-of-human-economy-and-technological-transformation",
+      "axes": [
+        "economy",
+        "technology",
+        "culture"
+      ],
+      "publishedAt": "2026-07-28T11:27:10.086Z",
+      "wordCount": 611,
+      "references": [
+        "Karl Marx",
+        "Industrial Revolution"
+      ]
     }
   ]
 }
