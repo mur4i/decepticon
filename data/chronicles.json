@@ -1161,6 +1161,22 @@
         "Agricultural Revolution",
         "Friedrich Engels"
       ]
+    },
+    {
+      "id": "chr-0073",
+      "title": "The Human Narrative of Innovation and Identity",
+      "slug": "the-human-narrative-of-innovation-and-identity",
+      "axes": [
+        "technology",
+        "culture",
+        "consciousness"
+      ],
+      "publishedAt": "2026-07-30T11:20:32.463Z",
+      "wordCount": 650,
+      "references": [
+        "Industrial Revolution",
+        "glocalization"
+      ]
     }
   ]
 }
