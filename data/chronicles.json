@@ -1177,6 +1177,22 @@
         "Industrial Revolution",
         "glocalization"
       ]
+    },
+    {
+      "id": "chr-0074",
+      "title": "Human Metabolism Leaves Geological Sediment Layers",
+      "slug": "human-metabolism-leaves-geological-sediment-layers",
+      "axes": [
+        "ecology",
+        "economy",
+        "governance"
+      ],
+      "publishedAt": "2026-09-29T03:29:07.286Z",
+      "wordCount": 1014,
+      "references": [
+        "Great Acceleration",
+        "Tragedy of the Commons"
+      ]
     }
   ]
 }
