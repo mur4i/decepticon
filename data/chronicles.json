@@ -1193,6 +1193,22 @@
         "Great Acceleration",
         "Tragedy of the Commons"
       ]
+    },
+    {
+      "id": "chr-0075",
+      "title": "Human Fecundity Inverts After Millennia of Expansion",
+      "slug": "human-fecundity-inverts-after-millennia-of-expansion",
+      "axes": [
+        "biology",
+        "economy",
+        "culture"
+      ],
+      "publishedAt": "2026-09-29T15:44:30.077Z",
+      "wordCount": 1103,
+      "references": [
+        "Second Demographic Transition theory",
+        "United Nations Population Division projections"
+      ]
     }
   ]
 }
