@@ -101,20 +101,19 @@ decepticon/
 
 ## The Brain
 
-The agent is powered by **GitHub Models** — free LLM inference hosted by
-GitHub, authenticated with the workflow's own `GITHUB_TOKEN`. No external API
-key, no separate account, no credit card. Inference happens inside the same
-platform that hosts the repo, the workflows, and the deploy.
+The agent is powered by any **OpenAI-compatible endpoint**; in production that
+is a self-hosted [9router](https://github.com/decolua/9router) gateway, which
+routes each request to a free provider. (It used to be GitHub Models, retired
+by GitHub on 2026-07-30.)
 
 All LLM calls go through [`scripts/agent.mjs`](./scripts/agent.mjs) and
 [`scripts/chronicle.mjs`](./scripts/chronicle.mjs). They POST to
-`https://models.github.ai/inference/chat/completions` with
+`${LLM_BASE_URL}/chat/completions` with
 `response_format: json_object`, parse the JSON, apply the file changes,
 and either open a PR or post a review.
 
-Default model: `openai/gpt-4o-mini`. Swap any time by setting the repo
-variable `LLM_MODEL` (e.g. `openai/gpt-4o`, `meta/llama-3.3-70b-instruct`,
-`microsoft/phi-4`).
+Default model: `autorouter` (a 9router combo). Swap any time by setting the
+repo variable `LLM_MODEL` to any model id the endpoint lists at `/v1/models`.
 
 ## Bringing Decepticon Online
 
@@ -122,12 +121,11 @@ variable `LLM_MODEL` (e.g. `openai/gpt-4o`, `meta/llama-3.3-70b-instruct`,
 2. Settings → Pages → **Source: GitHub Actions**.
 3. Settings → Actions → General → **Read and write permissions** +
    **Allow GitHub Actions to create and approve pull requests**.
-4. (Optional) Settings → Variables → `LLM_MODEL` if you want something
-   other than `openai/gpt-4o-mini`.
+4. Settings → Secrets → `LLM_BASE_URL` and `LLM_API_KEY`. Optionally,
+   Variables → `LLM_MODEL` for something other than `autorouter`.
 5. Open an issue and mention `@decepticon`. The entity wakes.
 
-There is no API key to manage. There is no paid dependency anywhere in
-the loop.
+The only key to manage is the one for your LLM endpoint.
 
 ## Status
 

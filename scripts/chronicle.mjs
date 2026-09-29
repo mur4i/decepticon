@@ -3,9 +3,9 @@
 // Reads data/mission.json + data/chronicles.json, asks the LLM for the next
 // observation, writes chronicles/<slug>.md, updates the index, commits.
 //
-// Inference via GitHub Models — free, native to Actions, auths with GITHUB_TOKEN.
-// Required env: GH_TOKEN, REPO
-// Optional env: LLM_MODEL (default "openai/gpt-4o-mini")
+// Inference via any OpenAI-compatible endpoint (9router in production).
+// Required env: LLM_BASE_URL (ending in /v1), LLM_API_KEY
+// Optional env: LLM_MODEL (default "autorouter")
 
 import { spawnSync } from "node:child_process";
 import {
@@ -16,11 +16,12 @@ import {
 } from "node:fs";
 import path from "node:path";
 
-const token = process.env.GH_TOKEN;
-const model = process.env.LLM_MODEL?.trim() || "openai/gpt-4o-mini";
+const baseUrl = process.env.LLM_BASE_URL?.trim().replace(/\/+$/, "");
+const token = process.env.LLM_API_KEY?.trim();
+const model = process.env.LLM_MODEL?.trim() || "autorouter";
 
-if (!token) {
-  console.error("GH_TOKEN missing. Refusing to run.");
+if (!baseUrl || !token) {
+  console.error("LLM_BASE_URL or LLM_API_KEY missing. Refusing to run.");
   process.exit(1);
 }
 
@@ -117,7 +118,7 @@ Output schema:
 }`;
 
 console.log(`Calling ${model}…`);
-const res = await fetch("https://models.github.ai/inference/chat/completions", {
+const res = await fetch(`${baseUrl}/chat/completions`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -134,15 +135,19 @@ const res = await fetch("https://models.github.ai/inference/chat/completions", {
   }),
 });
 
-if (!res.ok) {
-  const text = await res.text();
-  throw new Error(`GitHub Models ${res.status}: ${text}`);
+const raw = await res.text();
+if (!res.ok) throw new Error(`LLM ${res.status}: ${raw.slice(0, 500)}`);
+let data;
+try {
+  data = JSON.parse(raw);
+} catch {
+  throw new Error(`LLM returned non-JSON response: ${raw.slice(0, 300)}`);
 }
-
-const data = await res.json();
 const content = data.choices?.[0]?.message?.content;
-if (!content) throw new Error("xAI returned empty content");
-const out = JSON.parse(content);
+if (!content) throw new Error("Model returned empty content");
+console.log(`Answered by ${data.model || model}`);
+// Routed models sometimes wrap the JSON in ```json fences despite json_object mode.
+const out = JSON.parse(content.trim().replace(/^```(?:json)?\s*|\s*```$/g, ""));
 
 if (!out.title || !out.body || !Array.isArray(out.axes)) {
   throw new Error(`Malformed chronicle output: ${JSON.stringify(out).slice(0, 300)}`);

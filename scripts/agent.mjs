@@ -2,10 +2,12 @@
 // Decepticon agent — calls the LLM and applies the result.
 // One script, three modes: issue, review, heal. Dispatched by TASK_TYPE env.
 //
-// Inference via GitHub Models — free, native to Actions, auths with GITHUB_TOKEN.
+// Inference via any OpenAI-compatible endpoint (9router in production).
 //
 // Required env:
-//   GH_TOKEN           — workflow's GITHUB_TOKEN (used for both Models + gh CLI)
+//   GH_TOKEN           — workflow's GITHUB_TOKEN (gh CLI + GitHub API)
+//   LLM_BASE_URL       — OpenAI-compatible base URL, ending in /v1
+//   LLM_API_KEY        — key for LLM_BASE_URL
 //   REPO               — owner/name
 //   TASK_TYPE          — "issue" | "review" | "heal"
 //
@@ -15,7 +17,7 @@
 //   heal:   ROADBLOCK_ID
 //
 // Optional:
-//   LLM_MODEL          — default "openai/gpt-4o-mini"
+//   LLM_MODEL          — default "autorouter"
 
 import { spawnSync, execSync } from "node:child_process";
 import {
@@ -31,10 +33,12 @@ import os from "node:os";
 const token = process.env.GH_TOKEN;
 const repo = process.env.REPO;
 const taskType = process.env.TASK_TYPE;
-const model = process.env.LLM_MODEL?.trim() || "openai/gpt-4o-mini";
+const model = process.env.LLM_MODEL?.trim() || "autorouter";
+const llmBaseUrl = process.env.LLM_BASE_URL?.trim().replace(/\/+$/, "");
+const llmKey = process.env.LLM_API_KEY?.trim();
 
-if (!token || !repo) {
-  console.error("GH_TOKEN and REPO are required.");
+if (!token || !repo || !llmBaseUrl || !llmKey) {
+  console.error("GH_TOKEN, REPO, LLM_BASE_URL and LLM_API_KEY are required.");
   process.exit(1);
 }
 // Re-export under the canonical name for any gh CLI call.
@@ -146,11 +150,11 @@ function repoTree() {
 }
 
 async function callModel(userMessage) {
-  const res = await fetch("https://models.github.ai/inference/chat/completions", {
+  const res = await fetch(`${llmBaseUrl}/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${llmKey}`,
     },
     body: JSON.stringify({
       model,
@@ -162,14 +166,19 @@ async function callModel(userMessage) {
       ],
     }),
   });
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`GitHub Models ${res.status}: ${text}`);
+  const raw = await res.text();
+  if (!res.ok) throw new Error(`LLM ${res.status}: ${raw.slice(0, 500)}`);
+  let json;
+  try {
+    json = JSON.parse(raw);
+  } catch {
+    throw new Error(`LLM returned non-JSON response: ${raw.slice(0, 300)}`);
   }
-  const json = await res.json();
   const content = json.choices?.[0]?.message?.content;
   if (!content) throw new Error("Model returned empty content");
-  return JSON.parse(content);
+  console.log(`Answered by ${json.model || model}`);
+  // Routed models sometimes wrap the JSON in ```json fences despite json_object mode.
+  return JSON.parse(content.trim().replace(/^```(?:json)?\s*|\s*```$/g, ""));
 }
 
 function assertSafePath(p) {
