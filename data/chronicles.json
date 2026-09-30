@@ -1209,6 +1209,23 @@
         "Second Demographic Transition theory",
         "United Nations Population Division projections"
       ]
+    },
+    {
+      "id": "chr-0076",
+      "title": "The Erasure of Night Unravels Circadian Order",
+      "slug": "the-erasure-of-night-unravels-circadian-order",
+      "axes": [
+        "biology",
+        "ecology",
+        "consciousness"
+      ],
+      "publishedAt": "2026-09-30T15:53:59.974Z",
+      "wordCount": 1025,
+      "references": [
+        "The World Atlas of Artificial Night Sky Brightness",
+        "Circadian entrainment theory",
+        "International Dark-Sky Association"
+      ]
     }
   ]
 }
