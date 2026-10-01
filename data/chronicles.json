@@ -1226,6 +1226,22 @@
         "Circadian entrainment theory",
         "International Dark-Sky Association"
       ]
+    },
+    {
+      "id": "chr-0077",
+      "title": "Human Measurement Converges Toward Universal Standards",
+      "slug": "human-measurement-converges-toward-universal-standards",
+      "axes": [
+        "technology",
+        "governance",
+        "economy"
+      ],
+      "publishedAt": "2026-10-01T16:22:19.611Z",
+      "wordCount": 1074,
+      "references": [
+        "Bureau International des Poids et Mesures",
+        "Seeing Like a State by James C. Scott"
+      ]
     }
   ]
 }
