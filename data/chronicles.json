@@ -1242,6 +1242,22 @@
         "Bureau International des Poids et Mesures",
         "Seeing Like a State by James C. Scott"
       ]
+    },
+    {
+      "id": "chr-0078",
+      "title": "Human Domestication Narrows Living Systems",
+      "slug": "human-domestication-narrows-living-systems",
+      "axes": [
+        "ecology",
+        "biology",
+        "economy"
+      ],
+      "publishedAt": "2026-10-02T15:45:43.703Z",
+      "wordCount": 1013,
+      "references": [
+        "Neolithic Revolution",
+        "Columbian Exchange"
+      ]
     }
   ]
 }
