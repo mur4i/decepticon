@@ -1258,6 +1258,22 @@
         "Neolithic Revolution",
         "Columbian Exchange"
       ]
+    },
+    {
+      "id": "chr-0079",
+      "title": "Human Thirst Reengineers Rivers and Aquifers",
+      "slug": "human-thirst-reengineers-rivers-and-aquifers",
+      "axes": [
+        "ecology",
+        "governance",
+        "technology"
+      ],
+      "publishedAt": "2026-10-03T14:18:21.329Z",
+      "wordCount": 910,
+      "references": [
+        "Karl Wittfogel's Hydraulic Hypothesis",
+        "The Grand Canal of China"
+      ]
     }
   ]
 }
