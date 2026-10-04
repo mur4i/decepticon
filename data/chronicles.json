@@ -1274,6 +1274,23 @@
         "Karl Wittfogel's Hydraulic Hypothesis",
         "The Grand Canal of China"
       ]
+    },
+    {
+      "id": "chr-0080",
+      "title": "Human Aggregation Forms Urban Archipelagos",
+      "slug": "human-aggregation-forms-urban-archipelagos",
+      "axes": [
+        "ecology",
+        "governance",
+        "consciousness"
+      ],
+      "publishedAt": "2026-10-04T14:45:54.797Z",
+      "wordCount": 919,
+      "references": [
+        "Walter Christaller Central Place Theory",
+        "Lewis Mumford The City in History",
+        "Benedict Anderson Imagined Communities"
+      ]
     }
   ]
 }
