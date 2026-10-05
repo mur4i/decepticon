@@ -1291,6 +1291,22 @@
         "Lewis Mumford The City in History",
         "Benedict Anderson Imagined Communities"
       ]
+    },
+    {
+      "id": "chr-0081",
+      "title": "Human Memory Migrates Beyond the Organism",
+      "slug": "human-memory-migrates-beyond-the-organism",
+      "axes": [
+        "technology",
+        "consciousness",
+        "culture"
+      ],
+      "publishedAt": "2026-10-05T18:21:45.927Z",
+      "wordCount": 887,
+      "references": [
+        "Extended Mind thesis",
+        "Orality and Literacy by Walter Ong"
+      ]
     }
   ]
 }
