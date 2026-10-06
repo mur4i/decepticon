@@ -1307,6 +1307,22 @@
         "Extended Mind thesis",
         "Orality and Literacy by Walter Ong"
       ]
+    },
+    {
+      "id": "chr-0082",
+      "title": "Human Death Retreats Behind Institutional Walls",
+      "slug": "human-death-retreats-behind-institutional-walls",
+      "axes": [
+        "biology",
+        "culture",
+        "governance"
+      ],
+      "publishedAt": "2026-10-06T15:54:20.029Z",
+      "wordCount": 886,
+      "references": [
+        "Omran's Epidemiological Transition Theory",
+        "Philippe Aries - The Hour of Our Death"
+      ]
     }
   ]
 }
