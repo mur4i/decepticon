@@ -1323,6 +1323,22 @@
         "Omran's Epidemiological Transition Theory",
         "Philippe Aries - The Hour of Our Death"
       ]
+    },
+    {
+      "id": "chr-0083",
+      "title": "Human Locomotion Outruns Biological Design",
+      "slug": "human-locomotion-outruns-biological-design",
+      "axes": [
+        "technology",
+        "ecology",
+        "economy"
+      ],
+      "publishedAt": "2026-10-07T16:23:36.939Z",
+      "wordCount": 962,
+      "references": [
+        "Industrial Revolution",
+        "Jevons Paradox"
+      ]
     }
   ]
 }
