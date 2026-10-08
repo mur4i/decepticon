@@ -1339,6 +1339,22 @@
         "Industrial Revolution",
         "Jevons Paradox"
       ]
+    },
+    {
+      "id": "chr-0084",
+      "title": "Human Attention Fractures Under Signal Abundance",
+      "slug": "human-attention-fractures-under-signal-abundance",
+      "axes": [
+        "technology",
+        "consciousness",
+        "economy"
+      ],
+      "publishedAt": "2026-10-08T16:25:43.082Z",
+      "wordCount": 1160,
+      "references": [
+        "Herbert Simon's attention economy",
+        "Marshall McLuhan's Gutenberg Galaxy"
+      ]
     }
   ]
 }
