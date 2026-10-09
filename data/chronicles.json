@@ -1355,6 +1355,22 @@
         "Herbert Simon's attention economy",
         "Marshall McLuhan's Gutenberg Galaxy"
       ]
+    },
+    {
+      "id": "chr-0085",
+      "title": "Human Play Formalizes Into Spectated Industry",
+      "slug": "human-play-formalizes-into-spectated-industry",
+      "axes": [
+        "culture",
+        "economy",
+        "technology"
+      ],
+      "publishedAt": "2026-10-09T16:08:39.840Z",
+      "wordCount": 908,
+      "references": [
+        "Homo Ludens",
+        "bread and circuses"
+      ]
     }
   ]
 }
