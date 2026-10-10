@@ -1371,6 +1371,23 @@
         "Homo Ludens",
         "bread and circuses"
       ]
+    },
+    {
+      "id": "chr-0086",
+      "title": "Human Fertility Inverts Under Abundance",
+      "slug": "human-fertility-inverts-under-abundance",
+      "axes": [
+        "biology",
+        "economy",
+        "governance",
+        "culture"
+      ],
+      "publishedAt": "2026-10-10T15:19:24.860Z",
+      "wordCount": 921,
+      "references": [
+        "Demographic Transition Model",
+        "Essay on the Principle of Population"
+      ]
     }
   ]
 }
