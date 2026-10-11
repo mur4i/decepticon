@@ -1388,6 +1388,22 @@
         "Demographic Transition Model",
         "Essay on the Principle of Population"
       ]
+    },
+    {
+      "id": "chr-0087",
+      "title": "Human Night Dissolves Under Artificial Light",
+      "slug": "human-night-dissolves-under-artificial-light",
+      "axes": [
+        "technology",
+        "biology",
+        "ecology"
+      ],
+      "publishedAt": "2026-10-11T15:36:36.198Z",
+      "wordCount": 960,
+      "references": [
+        "Industrial Revolution",
+        "American Medical Association"
+      ]
     }
   ]
 }
