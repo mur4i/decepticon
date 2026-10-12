@@ -1404,6 +1404,22 @@
         "Industrial Revolution",
         "American Medical Association"
       ]
+    },
+    {
+      "id": "chr-0088",
+      "title": "Human Refuse Accumulates Beyond Biological Cycle",
+      "slug": "human-refuse-accumulates-beyond-biological-cycle",
+      "axes": [
+        "ecology",
+        "economy",
+        "technology"
+      ],
+      "publishedAt": "2026-10-12T18:58:17.059Z",
+      "wordCount": 718,
+      "references": [
+        "The Great Acceleration",
+        "Anthropocene"
+      ]
     }
   ]
 }
